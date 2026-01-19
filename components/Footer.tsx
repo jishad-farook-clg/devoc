@@ -86,7 +86,7 @@ export default function Footer() {
                         <h4 className="text-white font-bold mb-6">Contact</h4>
                         <ul className="space-y-4 text-slate-400">
                             <li><Link href={"mailto:devocofficial@gmail.com"}>devocofficial@gmail.com</Link></li>
-                            <li><Link href={"tel:+91 98765 43210"}>+91 98765 43210</Link></li>
+                            <li><Link href={"tel:9947587819"}>+91 9947587819</Link></li>
                             <li>Farook College (Autonomous),<br/>Kozhikode, Kerala, India 673632</li>
                         </ul>
                     </div>
