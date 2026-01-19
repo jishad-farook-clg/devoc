@@ -38,6 +38,10 @@ export default function CTA() {
               
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/30 border border-blue-400/30 text-blue-50 text-sm font-semibold mb-8 backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
                 <span>New Batch Starting Soon</span>
               </div>
 

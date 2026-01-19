@@ -14,10 +14,10 @@ const testimonials = [
     img: "/testimonial/testimonial_1.jpeg",
   },
   {
-    name: "Najad",
+    name: "Najad Musab VK",
     role: "B.Voc Software Development 1st year Student",
     content:
-      "The first time I saw a red error message, I panicked. Here, the mentors taught me that errors are just part of learning. I'm not scared to try new things or break code anymore.",
+      "Their dedication and effort to create a professional and career-oriented learning opportunity for us is truly inspiring. I am grateful for their guidance and vision, which will help us grow in the best way.",
     img: "/testimonial/testimonial_2.jpeg",
   },
   {
@@ -204,7 +204,7 @@ export default function TestimonialSlider() {
                         </h4>
                       </div>
 
-                      <p className="text-slate-500 text-sm font-semibold uppercase tracking-wide">
+                      <p className="text-slate-500 text-sm font-semibold tracking-wide">
                         {currentTestimonial.role}
                       </p>
                     </div>
