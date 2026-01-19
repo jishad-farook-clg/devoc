@@ -1,12 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Download, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, Download, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 export default function CTA() {
   return (
-    <section className="py-24 bg-white">
+    // CHANGE IS HERE: 
+    // Replaced 'bg-white' with 'bg-gradient-to-b from-slate-50 to-white'
+    // This matches the bottom of your testimonial section and fades to white.
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
       <div className="container mx-auto px-4 md:px-6">
         
         <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/20">
@@ -14,7 +17,7 @@ export default function CTA() {
           {/* Background: Gradient & Tech Grid */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800" />
           
-          {/* Decorative Grid Pattern (Optional but adds texture) */}
+          {/* Decorative Grid Pattern */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 mix-blend-overlay" />
           <div className="absolute inset-0 opacity-10" 
             style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '30px 30px' }} 
@@ -35,7 +38,6 @@ export default function CTA() {
               
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/30 border border-blue-400/30 text-blue-50 text-sm font-semibold mb-8 backdrop-blur-sm">
-                {/* <Sparkles size={14} className="text-yellow-300" /> */}
                 <span>New Batch Starting Soon</span>
               </div>
 

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Quote, ArrowRight, ArrowLeft, Star, CheckCircle2 } from "lucide-react";
+import { Quote, ArrowRight, ArrowLeft, Star } from "lucide-react";
 import Image from "next/image";
 
 const testimonials = [
@@ -44,37 +44,58 @@ const testimonials = [
 ];
 
 export default function TestimonialSlider() {
-  const [current, setCurrent] = useState(0);
+  // We use a tuple [page, direction] to track the absolute index and the swipe direction.
+  // this is the robust way to handle infinite loops in Framer Motion.
+  const [[page, direction], setPage] = useState([0, 0]);
   const [isPaused, setIsPaused] = useState(false);
+
+  // Calculate the index using modulo to wrap around array length safely
+  const imageIndex = Math.abs(page % testimonials.length);
+  const currentTestimonial = testimonials[imageIndex];
+
+  // Logic to handle slides
+  const paginate = useCallback((newDirection: number) => {
+    setPage((prev) => [prev[0] + newDirection, newDirection]);
+  }, []);
 
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
+      paginate(1);
     }, 7000);
     return () => clearInterval(timer);
-  }, [current, isPaused]);
+  }, [isPaused, paginate]);
 
-  const nextSlide = () =>
-    setCurrent((curr) => (curr + 1) % testimonials.length);
-  const prevSlide = () =>
-    setCurrent((curr) => (curr === 0 ? testimonials.length - 1 : curr - 1));
-
+  // Animation Variants
   const variants = {
-    enter: { x: 50, opacity: 0 },
-    center: { x: 0, opacity: 1 },
-    exit: { x: -50, opacity: 0 },
+    enter: (direction: number) => ({
+      x: direction > 0 ? 300 : -300, // Enter from right if Next, left if Prev
+      opacity: 0,
+      scale: 0.9, // Adds a nice depth effect
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 300 : -300, // Exit to right if Prev, left if Next
+      opacity: 0,
+      scale: 0.9,
+    }),
+  };
+
+  // Drag Logic
+  const swipeConfidenceThreshold = 10000;
+  const swipePower = (offset: number, velocity: number) => {
+    return Math.abs(offset) * velocity;
   };
 
   return (
     <section className="py-20 bg-slate-50 overflow-hidden relative">
-      {/* --------------------------------------------------
-         FAST LOADING FIX: THE HIDDEN PRELOADER 
-         This forces the browser to download ALL testimonial images
-         immediately when the page loads, so they are ready in 
-         the cache when the slider moves.
-         --------------------------------------------------
-      */}
+      {/* PRELOADER */}
       <div className="hidden">
         {testimonials.map((t, idx) => (
           <Image
@@ -83,25 +104,23 @@ export default function TestimonialSlider() {
             alt="preload"
             width={10}
             height={10}
-            priority={true}
+            priority
           />
         ))}
       </div>
 
-      {/* Background Gradient Mesh */}
+      {/* Background Gradients */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/60 rounded-full blur-3xl opacity-60 -z-10 translate-x-1/3 -translate-y-1/4" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-50/60 rounded-full blur-3xl opacity-60 -z-10 -translate-x-1/3 translate-y-1/4" />
 
       <div className="container mx-auto px-6">
-        {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">
-            Start From <span className="text-blue-600">Zero</span>. Build
-            Anything.
+            Start From <span className="text-blue-600">Zero</span>. Build Anything.
           </h2>
           <p className="text-lg text-slate-600 leading-relaxed">
-            You don&apos;t need prior experience to become a developer. See how
-            our students are mastering the skills to build the future.
+            You don&apos;t need prior experience to become a developer. See how our
+            students are mastering the skills to build the future.
           </p>
         </div>
 
@@ -111,19 +130,38 @@ export default function TestimonialSlider() {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <AnimatePresence mode="wait">
+          {/* We use popLayout so the exiting slide doesn't push the new one down */}
+          <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.div
-              key={current}
+              key={page} // Key must change for animation to trigger
+              custom={direction}
               variants={variants}
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-              className="w-full"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 },
+              }}
+              // --------------------------------------------------------
+              // DRAG CONFIGURATION
+              // --------------------------------------------------------
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }} // Snaps back to center
+              dragElastic={1} // Feeling of resistance
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = swipePower(offset.x, velocity.x);
+
+                if (swipe < -swipeConfidenceThreshold) {
+                  paginate(1); // Swipe Left -> Next Slide
+                } else if (swipe > swipeConfidenceThreshold) {
+                  paginate(-1); // Swipe Right -> Prev Slide
+                }
+              }}
+              className="w-full cursor-grab active:cursor-grabbing"
             >
               {/* Card */}
-              <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl shadow-blue-900/5 border border-white/50 backdrop-blur-sm relative overflow-hidden group">
-                
+              <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl shadow-blue-900/5 border border-white/50 backdrop-blur-sm relative overflow-hidden group select-none">
                 <Quote className="absolute top-4 right-8 text-blue-50 w-32 h-32 -z-0 rotate-12 opacity-50 transition-transform duration-700 group-hover:rotate-0" />
 
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-8 relative z-10">
@@ -131,13 +169,14 @@ export default function TestimonialSlider() {
                   <div className="flex-shrink-0">
                     <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl relative overflow-hidden shadow-lg ring-4 ring-blue-50/50">
                       <Image
-                        src={testimonials[current].img}
-                        alt={testimonials[current].name}
+                        src={currentTestimonial.img}
+                        alt={currentTestimonial.name}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        // ADDED PRIORITY HERE TOO
-                        priority={true} 
+                        priority
+                        // Prevents image ghosting while dragging
+                        draggable={false}
                       />
                     </div>
                   </div>
@@ -155,18 +194,18 @@ export default function TestimonialSlider() {
                     </div>
 
                     <p className="text-slate-700 text-xl leading-relaxed mb-6 font-medium">
-                      &quot;{testimonials[current].content}&quot;
+                      &quot;{currentTestimonial.content}&quot;
                     </p>
 
                     <div className="border-t border-slate-100 pt-6 mt-2">
                       <div className="flex items-center justify-center md:justify-start gap-2 mb-1">
                         <h4 className="font-bold text-slate-900 text-lg tracking-tight">
-                          {testimonials[current].name}
+                          {currentTestimonial.name}
                         </h4>
                       </div>
 
                       <p className="text-slate-500 text-sm font-semibold uppercase tracking-wide">
-                        {testimonials[current].role}
+                        {currentTestimonial.role}
                       </p>
                     </div>
                   </div>
@@ -178,20 +217,24 @@ export default function TestimonialSlider() {
           {/* Controls */}
           <div className="flex items-center justify-center gap-6 mt-12">
             <button
-              onClick={prevSlide}
-              className="p-3 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-600 hover:shadow-lg transition-all"
+              onClick={() => paginate(-1)}
+              className="p-3 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-600 hover:shadow-lg transition-all z-20"
               aria-label="Previous testimonial"
             >
               <ArrowLeft size={20} />
             </button>
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 z-20">
               {testimonials.map((_, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setCurrent(idx)}
+                  onClick={() => {
+                    // Logic to determine direction based on click
+                    const direction = idx > imageIndex ? 1 : -1;
+                    setPage([idx, direction]);
+                  }}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    idx === current
+                    idx === imageIndex
                       ? "w-8 bg-blue-600 shadow-md shadow-blue-500/30"
                       : "w-2 bg-slate-300 hover:bg-slate-400"
                   }`}
@@ -201,8 +244,8 @@ export default function TestimonialSlider() {
             </div>
 
             <button
-              onClick={nextSlide}
-              className="p-3 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-600 hover:shadow-lg transition-all"
+              onClick={() => paginate(1)}
+              className="p-3 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-600 hover:shadow-lg transition-all z-20"
               aria-label="Next testimonial"
             >
               <ArrowRight size={20} />
