@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import Image from "next/image";
 
 export default function AboutSimple() {
   return (
@@ -22,7 +23,7 @@ export default function AboutSimple() {
         >
             {/* 1. Label / Heading */}
             <div className="flex items-center justify-center gap-2 mb-4 lg:mb-6">
-                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />
+                {/* <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" /> */}
                 <span className="font-bold text-slate-800 tracking-tight text-sm sm:text-lg">
                     About DeVoc
                 </span>
@@ -38,7 +39,7 @@ export default function AboutSimple() {
             <div className="max-w-2xl mx-auto">
                 {/* UPDATED: Aligned with sources 6 & 7 to emphasize methodology over generic descriptions */}
                 <p className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
-                    We focus on learning by building, continuous mentorship, and real-world development practices—not just theory classes.
+                    We focus on learning by building, continuous mentorship, and real-world development practices, not just theory classes.
                 </p>
             </div>
             

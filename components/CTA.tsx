@@ -35,7 +35,7 @@ export default function CTA() {
               
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/30 border border-blue-400/30 text-blue-50 text-sm font-semibold mb-8 backdrop-blur-sm">
-                <Sparkles size={14} className="text-yellow-300" />
+                {/* <Sparkles size={14} className="text-yellow-300" /> */}
                 <span>New Batch Starting Soon</span>
               </div>
 

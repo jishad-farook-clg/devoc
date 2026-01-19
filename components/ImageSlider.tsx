@@ -5,6 +5,9 @@ import Image from "next/image";
 
 const items = [
   { src: "/gallery/gallery1.jpeg", alt: "" },
+  { src: "/gallery/gallery8.jpeg", alt: "" },
+  { src: "/gallery/gallery9.jpeg", alt: "" },
+  { src: "/gallery/gallery7.jpeg", alt: "" },
   { src: "/gallery/gallery2.jpeg", alt: "" },
   { src: "/gallery/gallery3.jpeg", alt: "" },
   { src: "/gallery/gallery4.jpeg", alt: "" },

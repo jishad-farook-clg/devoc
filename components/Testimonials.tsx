@@ -34,6 +34,13 @@ const testimonials = [
       "Watching videos made me feel like I understood, but I couldn't write a single line. This community pushed me to type the code myself. That hands-on practice changed everything for me.",
     img: "/testimonial/testimonial_4.jpeg",
   },
+  {
+    name: "Shalib",
+    role: "B.Voc Software Development 2nd year Student",
+    content:
+      "As the Media Head of DeVoc, I'm proud to represent a brand driven by creativity, consistency, and clear vision. DeVoc's strong teamwork and impactful communication help build trust, engagement, and a growing community.",
+    img: "/testimonial/testimonial_5.jpeg",
+  },
 ];
 
 export default function TestimonialSlider() {

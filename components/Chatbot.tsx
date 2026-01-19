@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 type Message = {
     id: number;
@@ -30,7 +31,7 @@ const qaData = [
     {
         question: "Why choose DeVoc?",
         // Aligned with Source 13-17
-        answer: "• Learn through real projects, not tutorials\n• Continuous mentorship & reviews\n• Portfolio-ready by graduation\n• Strong focus on communication skills\n• Community-driven growth",
+        answer: "• Learn through real projects, not tutorials\n• Continuous mentorship & reviews\n• Portfolio ready by completion\n• Strong focus on communication skills\n• Community-driven growth\n• No prior tech experience required",
     }
 ];
 
@@ -154,7 +155,10 @@ export default function Chatbot() {
                         {/* Header */}
                         <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-4 flex items-center justify-between text-white">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center"><Sparkles size={20} /></div>
+                                <div className="w-10 h-10 rounded-full overflow-hidden bg-white/ flex items-center justify-center">
+                                {/* <Sparkles size={20} /> */}
+                                <Image src={"/logo.jpg"} className="object-cover" height={100} width={100} alt="" />
+                                </div>
                                 <div>
                                     <h3 className="font-bold text-sm">DeVoc Assistant</h3>
                                     <p className="text-xs text-blue-100 flex items-center gap-1">
@@ -162,7 +166,7 @@ export default function Chatbot() {
                                     </p>
                                 </div>
                             </div>
-                            <button onClick={() => setIsOpen(false)} className="p-1 hover:bg-white/20 rounded-full"><X size={20} /></button>
+                            <button onClick={() => setIsOpen(false)} className="p-1 cursor-pointer hover:bg-white/20 rounded-full"><X size={20} /></button>
                         </div>
 
                         {/* Messages Area */}
@@ -224,7 +228,7 @@ export default function Chatbot() {
                             <button 
                                 type="submit"
                                 disabled={!inputValue.trim()}
-                                className="p-2 bg-blue-600 text-white rounded-full disabled:opacity-50 hover:bg-blue-700 transition-colors"
+                                className="p-2 cursor-pointer bg-blue-600 text-white rounded-full disabled:opacity-50 hover:bg-blue-700 transition-colors"
                             >
                                 <Send size={16} />
                             </button>
