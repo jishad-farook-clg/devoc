@@ -14,7 +14,7 @@ export default function RegisterPage() {
     email: "",
     phone: "",
     department: "",
-    course: "",
+    // course: "",
   });
 
   const handleChange = (
@@ -82,7 +82,7 @@ export default function RegisterPage() {
                 <Input label="Phone Number" name="phone" value={form.phone} onChange={handleChange} />
                 <Input label="Department" name="department" value={form.department} onChange={handleChange} />
 
-                <div>
+                {/* <div>
                   <label className="block text-sm font-medium mb-1">
                     Interested Course
                   </label>
@@ -100,7 +100,7 @@ export default function RegisterPage() {
                     <option>Django</option>
                     <option>I didn&apos;t choose yet</option>
                   </select>
-                </div>
+                </div> */}
 
                 <button
                   disabled={loading}

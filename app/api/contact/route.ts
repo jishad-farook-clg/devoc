@@ -26,6 +26,7 @@ export async function POST(req: Request) {
 
     // 🕒 Readable timestamp (AM/PM)
     const timestamp = new Date().toLocaleString("en-IN", {
+      timeZone: "Asia/Kolkata",
       day: "2-digit",
       month: "short",
       year: "numeric",
@@ -33,6 +34,7 @@ export async function POST(req: Request) {
       minute: "2-digit",
       hour12: true,
     });
+
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID!,
