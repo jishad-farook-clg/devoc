@@ -44,7 +44,7 @@ export default function Footer() {
                         <h4 className="text-white font-bold mb-6">Company</h4>
                         <ul className="space-y-4">
                             <li>
-                                <Link href={"#about"} className="hover:text-white transition-colors">
+                                <Link href={"/#about"} className="hover:text-white transition-colors">
                                     About Us
                                 </Link>
                             </li>
@@ -59,7 +59,7 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href={"#home"} className="hover:text-white transition-colors">
+                                <Link href={"/#home"} className="hover:text-white transition-colors">
                                     Terms & Conditions
                                 </Link>
                             </li>

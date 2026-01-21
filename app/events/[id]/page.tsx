@@ -28,7 +28,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <Navbar />
 
-      <main className="flex-grow pt-24 pb-16">
+      <main className="flex-grow pt-24 px-10 pb-16">
         {/* AMBIENT BACKGROUND LAYER */}
         <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-[800px] opacity-10">

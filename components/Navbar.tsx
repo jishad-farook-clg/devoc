@@ -42,10 +42,16 @@ export default function Navbar() {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
                     <Link
-                        href={"#about"}
+                        href={"/#about"}
                         className="text-slate-600 hover:text-primary transition-colors font-medium"
                         >
                         About
+                    </Link>
+                    <Link
+                        href={"/events"}
+                        className="text-slate-600 hover:text-primary transition-colors font-medium"
+                        >
+                        Events
                     </Link>
                     <Link
                         href={"/contact"}
@@ -78,11 +84,18 @@ export default function Navbar() {
                         className="absolute top-full left-0 w-full bg-white shadow-lg border-t border-slate-100 p-6 md:hidden flex flex-col gap-4"
                     >
                             <Link
-                                href={"#about"}
+                                href={"/#about"}
                                 className="text-lg text-slate-700 font-medium py-2 border-b border-slate-50"
                                 onClick={() => setIsOpen(false)}
                             >
                                 About
+                            </Link>
+                            <Link
+                                href={"/events"}
+                                className="text-lg text-slate-700 font-medium py-2 border-b border-slate-50"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Events
                             </Link>
                             <Link
                                 href={"/contact"}

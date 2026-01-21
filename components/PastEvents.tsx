@@ -28,7 +28,7 @@ const cardVariants = {
 
 export default function PastEvents() {
   return (
-    <section className="py-20 md:py-24 bg-slate-50 relative overflow-hidden">
+    <section className="py-20 px-10 md:py-24 bg-slate-50 relative overflow-hidden">
       {/* Subtle Grid Background */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light pointer-events-none" />
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />

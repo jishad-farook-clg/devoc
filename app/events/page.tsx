@@ -39,7 +39,7 @@ export default function EventsPage() {
       <Navbar />
 
       <main className="flex-grow">
-        <section className="py-20 md:py-24 relative overflow-hidden">
+        <section className="py-20 px-10 md:py-24 relative overflow-hidden">
           
           {/* Subtle Grid Background */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light pointer-events-none" />
@@ -51,7 +51,7 @@ export default function EventsPage() {
             <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
               <div className="max-w-2xl">
                 <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
-                  Where We&apos;ve <span className="text-blue-600">Been</span>
+                  Where We&apos;ve Been
                 </h2>
                 <p className="text-slate-600 text-base md:text-lg">
                   From intense hackathons to casual learning sessions, here is a look back at the events that shaped our community.
