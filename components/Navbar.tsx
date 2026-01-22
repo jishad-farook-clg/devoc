@@ -48,7 +48,7 @@ export default function Navbar() {
                         About
                     </Link>
                     <Link
-                        href={"/events"}
+                        href={"#events"}
                         className="text-slate-600 hover:text-primary transition-colors font-medium"
                         >
                         Events
@@ -91,7 +91,7 @@ export default function Navbar() {
                                 About
                             </Link>
                             <Link
-                                href={"/events"}
+                                href={"#events"}
                                 className="text-lg text-slate-700 font-medium py-2 border-b border-slate-50"
                                 onClick={() => setIsOpen(false)}
                             >

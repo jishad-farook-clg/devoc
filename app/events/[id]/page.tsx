@@ -32,12 +32,12 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
         {/* AMBIENT BACKGROUND LAYER */}
         <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-[800px] opacity-10">
-             <Image
-              src={event.image}
-              alt="ambient bg"
-              fill
-              className="object-cover blur-[100px]"
-            />
+               <Image
+               src={event.image}
+               alt="ambient bg"
+               fill
+               className="object-cover blur-[100px]"
+               />
           </div>
         </div>
 
@@ -47,10 +47,10 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
           {/* Breadcrumb / Back Button */}
           <div className="mb-8">
             <Link 
-              href="/events" 
+              href="/" 
               className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 font-semibold transition-colors bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200/50 hover:shadow-sm"
             >
-              <ArrowLeft size={16} /> Back to Events
+              <ArrowLeft size={16} /> Back to Home
             </Link>
           </div>
 
@@ -93,8 +93,8 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
               
               <div className="prose prose-lg prose-slate max-w-none text-slate-600 leading-relaxed">
 
-                {event.fullDetails && Array.isArray(event.fullDetails) ? (
-                  event.fullDetails.map((paragraph, index) => (
+                {event.description && Array.isArray(event.description) ? (
+                  event.description.map((paragraph, index) => (
                     <p key={index} className="mb-3">
                       {paragraph}
                     </p>
@@ -106,17 +106,21 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
             </div>
 
             {/* Right Column: Sticky Sidebar Card */}
+            {(event.date || event.location || event.attendees) && (
             <div className="lg:w-1/3">
               <div className="sticky top-24 space-y-6">
                 
                 {/* Details Card */}
+  
+
                 <div className="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100">
                   <h3 className="text-lg font-bold text-slate-900 mb-6 border-b border-slate-100 pb-4">
                     Event Details
                   </h3>
                   
                   <div className="space-y-6">
-                    <div className="flex items-start gap-4 group">
+                    {event.date&&(
+                      <div className="flex items-start gap-4 group">
                       <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl">
                         <Calendar size={24} />
                       </div>
@@ -125,7 +129,9 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
                         <p className="text-slate-900 font-semibold">{event.date}</p>
                       </div>
                     </div>
+                    )}
 
+                      {event.location&&(
                     <div className="flex items-start gap-4 group">
                        <div className="p-3 bg-purple-50 text-purple-600 rounded-2xl">
                         <MapPin size={24} />
@@ -135,8 +141,10 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
                         <p className="text-slate-900 font-semibold">{event.location}</p>
                       </div>
                     </div>
+                      )}
 
-                    <div className="flex items-start gap-4 group">
+                    {event.attendees&&(
+                      <div className="flex items-start gap-4 group">
                        <div className="p-3 bg-green-50 text-green-600 rounded-2xl">
                         <Users size={24} />
                       </div>
@@ -145,6 +153,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
                         <p className="text-slate-900 font-semibold">{event.attendees}</p>
                       </div>
                     </div>
+                    )}
 
                   </div>
 
@@ -152,7 +161,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
 
               </div>
             </div>
-
+          )}
           </div>
         </div>
       </main>

@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 import AboutSecond from "@/components/About";
 import ImageSlider from "@/components/ImageSlider";
-import PastEvents from "@/components/PastEvents";
+import Events from "@/components/Events";
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
       <Features />
       <About />
       <AboutSecond/>
-      <PastEvents/>
+      <Events/>
       {/* <Courses /> */}
       <ImageSlider/>
       <Testimonials />
