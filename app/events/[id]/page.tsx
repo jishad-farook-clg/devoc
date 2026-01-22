@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Calendar, MapPin, Users, ArrowLeft, Share2 } from "lucide-react";
+import { Calendar, MapPin, Users, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 // Make sure this path is correct for your project structure
 import { events } from "@/data/events"; 
@@ -28,10 +28,10 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <Navbar />
 
-      <main className="flex-grow pt-24 px-10 pb-16">
+      <main className="grow pt-24 px-10 pb-16">
         {/* AMBIENT BACKGROUND LAYER */}
         <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-[800px] opacity-10">
+          <div className="absolute top-0 left-0 w-full h-200 opacity-10">
                <Image
                src={event.image}
                alt="ambient bg"
@@ -71,7 +71,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
           </div>
 
           {/* THE HERO IMAGE */}
-          <div className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-[2rem] overflow-hidden shadow-2xl shadow-blue-900/10 mb-12 border border-slate-200/50">
+          <div className="relative w-full aspect-video md:aspect-21/9 rounded-4xl overflow-hidden shadow-2xl shadow-blue-900/10 mb-12 border border-slate-200/50">
             <Image
               src={event.image}
               alt={event.title}
@@ -88,7 +88,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
             <div className="lg:w-2/3">
               <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                 About the Event
-                <div className="h-px bg-slate-200 flex-grow ml-4" />
+                <div className="h-px bg-slate-200 grow ml-4" />
               </h2>
               
               <div className="prose prose-lg prose-slate max-w-none text-slate-600 leading-relaxed">

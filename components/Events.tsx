@@ -30,7 +30,7 @@ export default function PastEvents() {
     <section id="events" className="py-20 px-10 md:py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light pointer-events-none" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-300 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
@@ -76,7 +76,7 @@ export default function PastEvents() {
                     />
                   )}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
 
                   <div className="absolute top-3 left-3 right-3 flex justify-between">
                     {event.date && (
@@ -95,7 +95,7 @@ export default function PastEvents() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col grow">
                   {event.title && (
                     <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-1">
                       {event.title}
@@ -103,7 +103,7 @@ export default function PastEvents() {
                   )}
 
                   {event.description && (
-                    <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2 flex-grow">
+                    <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2 grow">
                       {event.description}
                     </p>
                   )}
