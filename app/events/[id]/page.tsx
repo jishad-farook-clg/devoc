@@ -45,6 +45,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
               <ArrowLeft size={16} /> Back to Home
             </Link>
           </div>
+          
 
           {/* Header */}
           <div className="max-w-4xl mb-8">
