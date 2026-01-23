@@ -21,7 +21,7 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -37,11 +37,11 @@ export default function PastEvents() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
-              Our Events
+              Live Events
             </h2>
-            <p className="text-slate-600 text-base md:text-lg">
+            {/* <p className="text-slate-600 text-base md:text-lg">
               Moments from past gatherings and ongoing initiatives that bring our community together.
-            </p>
+            </p> */}
           </div>
         </div>
 
