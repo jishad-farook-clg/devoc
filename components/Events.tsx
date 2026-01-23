@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { easeOut } from "framer-motion"
 import { events } from "@/data/events";
 
 const containerVariants = {
@@ -21,7 +21,7 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.5, ease: easeOut },
   },
 };
 
