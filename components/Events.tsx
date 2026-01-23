@@ -34,7 +34,7 @@ export default function PastEvents() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
               Live Events
