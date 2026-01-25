@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { InputHTMLAttributes, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { CheckCircle2, Loader2, ArrowLeft } from "lucide-react";
@@ -11,7 +11,7 @@ export default function ContactPage() {
   const [success, setSuccess] = useState(false);
   const [form, setForm] = useState({
     name: "",
-    email: "",
+    phone: "", 
     message: "",
   });
 
@@ -85,10 +85,9 @@ export default function ContactPage() {
                 />
 
                 <Input
-                  label="Email Address"
-                  name="email"
-                  type="email"
-                  value={form.email}
+                  label="Phone Number"
+                  name="phone"
+                  value={form.phone}
                   onChange={handleChange}
                 />
 
@@ -109,14 +108,13 @@ export default function ContactPage() {
 
                 <button
                   disabled={loading}
-                  className="w-full py-4 bg-primary text-white rounded-xl font-bold flex justify-center gap-2"
+                  className="w-full py-4 bg-primary text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer"
                 >
                   {loading ? <Loader2 className="animate-spin" /> : "Send Message"}
                 </button>
               </form>
             </motion.div>
           ) : (
-            /* ✅ REGISTER-STYLE SUCCESS BOX */
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -148,11 +146,16 @@ export default function ContactPage() {
   );
 }
 
-function Input({ label, ...props }: any) {
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+  label: string;
+};
+
+function Input({ label, ...props }: InputProps) {
   return (
     <div>
-      <label className="block text-sm font-medium mb-1">{label}</label>
+      <label htmlFor={label} className="block text-sm font-medium mb-1">{label}</label>
       <input
+        id={label}
         required
         className="w-full px-4 py-3 rounded-xl border outline-none"
         {...props}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { InputHTMLAttributes, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, Loader2 } from "lucide-react";
@@ -77,11 +77,43 @@ export default function RegisterPage() {
               </p>
 
               <form onSubmit={handleSignup} className="space-y-5">
-                <Input label="Full Name" name="name" value={form.name} onChange={handleChange} />
-                <Input label="Email Address" name="email" type="email" value={form.email} onChange={handleChange} />
-                <Input label="Phone Number" name="phone" value={form.phone} onChange={handleChange} />
-                <Input label="Department" name="department" value={form.department} onChange={handleChange} />
+                <Input
+                  id="name"
+                  label="Full Name"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  />
 
+                <Input
+                  id="email"
+                  label="Email Address"
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  />
+
+                <Input
+                  id="phone"
+                  label="Phone Number"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                  />
+
+                <Input
+                  id="department"
+                  label="Department"
+                  name="department"
+                  value={form.department}
+                  onChange={handleChange}
+                  required
+                />
+                
                 {/* <div>
                   <label className="block text-sm font-medium mb-1">
                     Interested Course
@@ -104,7 +136,7 @@ export default function RegisterPage() {
 
                 <button
                   disabled={loading}
-                  className="w-full py-4 bg-primary text-white rounded-xl font-bold flex justify-center gap-2"
+                  className="w-full py-4 bg-primary text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer"
                 >
                   {loading ? <Loader2 className="animate-spin" /> : "Register"}
                 </button>
@@ -139,16 +171,19 @@ export default function RegisterPage() {
   );
 }
 
-function Input({ label, ...props }: any) {
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+  label: string;
+  id: string;
+};
+
+function Input({ label, id, ...props }: InputProps) {
   return (
     <div>
-      <label htmlFor={label} className="block text-sm font-medium mb-1">{label}</label>
+      <label htmlFor={id} className="block text-sm font-medium mb-1">{label}</label>
       <input
-        required
-        id={label}
+        id={id}
         className="w-full px-4 py-3 rounded-xl border outline-none"
         {...props}
-        autoComplete="on"
       />
     </div>
   );
