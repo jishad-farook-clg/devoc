@@ -142,11 +142,13 @@ export default function RegisterPage() {
 function Input({ label, ...props }: any) {
   return (
     <div>
-      <label className="block text-sm font-medium mb-1">{label}</label>
+      <label htmlFor={label} className="block text-sm font-medium mb-1">{label}</label>
       <input
         required
+        id={label}
         className="w-full px-4 py-3 rounded-xl border outline-none"
         {...props}
+        autoComplete="on"
       />
     </div>
   );

@@ -93,13 +93,14 @@ export default function ContactPage() {
                 />
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">
+                  <label htmlFor="message" className="block text-sm font-medium mb-1">
                     Message
                   </label>
                   <textarea
                     name="message"
                     rows={4}
                     required
+                    id="message"
                     value={form.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border outline-none resize-none"

@@ -79,7 +79,7 @@ export default function Hero() {
                                 Start Learning Today
                                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                             </Link>
-                            <Link href={"/brochure.pdf"} download={"brochure.pdf"} className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
+                            <Link href={"/files/brochure.pdf"} download={"brochure.pdf"} className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
                                 Download Brochure
                                 <Download className="group-hover:translate-x-1 transition-transform" />
                             </Link>

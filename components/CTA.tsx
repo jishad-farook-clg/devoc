@@ -71,7 +71,7 @@ export default function CTA() {
 
                 {/* Secondary Button */}
                 <Link
-                  href="/brochure.pdf"
+                  href="/files/brochure.pdf"
                   download="brochure.pdf"
                   className="group w-full sm:w-auto px-8 py-4 bg-transparent border border-blue-300/30 text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-2"
                 >

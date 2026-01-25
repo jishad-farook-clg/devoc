@@ -75,7 +75,7 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href={"/brochure.pdf"} download={"brochure.pdf"} className="hover:text-white transition-colors">
+                                <Link href={"/files/brochure.pdf"} download={"brochure.pdf"} className="hover:text-white transition-colors">
                                     Brochure
                                 </Link>
                             </li>
