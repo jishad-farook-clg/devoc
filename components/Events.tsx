@@ -45,6 +45,7 @@ export default function PastEvents() {
           </div>
         </div>
 
+
         {/* Cards */}
         <motion.div
           variants={containerVariants}
