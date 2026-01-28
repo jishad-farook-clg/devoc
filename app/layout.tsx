@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Master real-world coding skills with DeVoc's hybrid learning model. From basic web dev to advanced capstone projects, get mentorship, soft skills, and career prep.",
 
   openGraph: {
-    title: "DeVoc | Project-Based Software Development",
+    title: "DeVoc | Project-Based Software Development & Hybrid Coding Program",
     description:
       "Project-based hybrid coding program with mentorship and real-world experience.",
     url: "https://devoc.bvocfarookcollege.com",
