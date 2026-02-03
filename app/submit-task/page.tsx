@@ -69,7 +69,7 @@ export default function VideoSubmissionPage() {
             href="/"
             className="text-sm font-medium text-slate-500 hover:text-primary flex items-center gap-1"
           >
-            <ArrowLeft size={16} /> Back to Dashboard
+            <ArrowLeft size={16} /> Back to Home
           </Link>
         </div>
       </nav>
@@ -98,7 +98,7 @@ export default function VideoSubmissionPage() {
                     <span className="font-bold">•</span> Record a 4-5 minute video on today&apos;s topic.
                   </li>
                   <li className="flex gap-2">
-                    <span className="font-bold">•</span> Video must be <strong>Public or Unlisted</strong>.
+                    <span className="font-bold">•</span> Video must be <strong>Public or Unlisted.</strong>
                   </li>
                   <li className="flex gap-2">
                     <span className="font-bold">•</span> Your face and voice must be clearly visible.
@@ -253,13 +253,13 @@ export default function VideoSubmissionPage() {
                   onClick={() => { setSuccess(false); setForm(prev => ({...prev, topic: "", youtubeLink: "", declaration: false})); }}
                   className="w-full py-3 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 rounded-xl font-bold transition-colors cursor-pointer"
                 >
-                  Submit Another Video
+                  Submit Another Task
                 </button>
                 <Link
                   href="/"
                   className="w-full py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-colors"
                 >
-                  Back to Dashboard
+                  Back to Home
                 </Link>
               </div>
             </motion.div>
