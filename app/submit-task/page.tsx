@@ -193,6 +193,7 @@ export default function VideoSubmissionPage() {
                       <input
                         type="url"
                         name="youtubeLink"
+                        onFocus={(e) => e.target.setAttribute('autocomplete', 'off')}
                         required
                         placeholder="https://youtu.be/..."
                         value={form.youtubeLink}
