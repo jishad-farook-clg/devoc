@@ -98,13 +98,7 @@ export default function VideoSubmissionPage() {
                     <span className="font-bold">•</span> Record a 4-5 minute video on today&apos;s topic.
                   </li>
                   <li className="flex gap-2">
-                    <span className="font-bold">•</span> Video must be <strong>Public or Unlisted.</strong>
-                  </li>
-                  <li className="flex gap-2">
                     <span className="font-bold">•</span> Your face and voice must be clearly visible.
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="font-bold">•</span> Submissions not following these rules may be rejected.
                   </li>
                 </ul>
               </div>
@@ -202,7 +196,6 @@ export default function VideoSubmissionPage() {
                       />
                       <Youtube className="absolute left-3 top-1/2 -translate-y-1/2 text-red-500" size={20} />
                     </div>
-                    <p className="text-xs text-slate-500 mt-1">Video must be Public or Unlisted.</p>
                   </div>
                 </div>
 
@@ -218,7 +211,7 @@ export default function VideoSubmissionPage() {
                     className="mt-1 w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary"
                   />
                   <label htmlFor="declaration" className="text-sm text-slate-600 leading-relaxed cursor-pointer select-none">
-                    I confirm that this video is recorded by me, uploaded as <strong>Public or Unlisted</strong>, and follows today&apos;s task instructions.
+                    I confirm that this video is recorded by me and follows today&apos;s task instructions.
                   </label>
                 </div>
 
