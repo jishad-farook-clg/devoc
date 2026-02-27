@@ -13,6 +13,7 @@ export default function RegisterPage() {
     name: "",
     email: "",
     phone: "",
+    college: "",
     department: "",
     // course: "",
   });
@@ -104,6 +105,15 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   required
                   />
+
+                <Input
+                  id="college"
+                  label="College"
+                  name="college"
+                  value={form.college}
+                  onChange={handleChange}
+                  required
+                />
 
                 <Input
                   id="department"
