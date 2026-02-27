@@ -14,8 +14,12 @@ export function generateStaticParams() {
 }
 
 // 2️⃣ Event Page Component
-export default async function EventDetailsPage({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = await params; // must await the Promise
+export default async function EventDetailsPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const resolvedParams = await params;
   const eventId = resolvedParams.id;
   const event = events.find((e) => e.id.toString() === eventId);
 
@@ -26,99 +30,151 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <Navbar />
-      <main className="grow pt-24 px-10 pb-16">
+
+      <main className="grow pt-24 px-6 sm:px-8 md:px-10 pb-16 relative">
         {/* Ambient background */}
         <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-200 opacity-10">
-            <Image src={event.image} alt="ambient bg" fill className="object-cover blur-[100px]" />
+          <div className="absolute top-0 left-0 w-full h-[60vh] opacity-10">
+            <Image
+              src={event.image}
+              alt="ambient background"
+              fill
+              className="object-cover blur-[120px]"
+            />
           </div>
         </div>
 
         {/* Main content */}
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto relative z-10 max-w-7xl">
           {/* Breadcrumb */}
           <div className="mb-8">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 font-semibold transition-colors bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200/50 hover:shadow-sm"
+              className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 font-semibold transition-colors bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200/60 hover:shadow-sm"
             >
-              <ArrowLeft size={16} /> Back to Home
+              <ArrowLeft size={16} />
+              Back to Home
             </Link>
           </div>
-          
 
           {/* Header */}
-          <div className="max-w-4xl mb-8">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-xs font-bold text-blue-700 bg-blue-100 border border-blue-200 rounded-full uppercase tracking-wider">
-                {event.category}
-              </span>
-              <span className="px-3 py-1 text-xs font-bold text-slate-600 bg-slate-100 border border-slate-200 rounded-full flex items-center gap-1">
-                <Calendar size={12} /> {event.date}
-              </span>
+          <div className="max-w-4xl mb-10">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              {event.category && (
+                <span className="px-3 py-1 text-xs font-bold text-blue-700 bg-blue-100 border border-blue-200 rounded-full uppercase tracking-wider">
+                  {event.category}
+                </span>
+              )}
+              {event.date && (
+                <span className="px-3 py-1 text-xs font-bold text-slate-600 bg-slate-100 border border-slate-200 rounded-full flex items-center gap-1">
+                  <Calendar size={12} />
+                  {event.date}
+                </span>
+              )}
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1]">
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
               {event.title}
             </h1>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative w-full aspect-video md:aspect-21/9 rounded-4xl overflow-hidden shadow-2xl shadow-blue-900/10 mb-12 border border-slate-200/50">
-            <Image src={event.image} alt={event.title} fill className="object-cover" priority />
+          {/* Hero Image – aspect preserved, no white bg */}
+          <div className="w-full mb-14">
+            <div className="relative w-full max-w-6xl mx-auto overflow-hidden">
+              <Image
+                src={event.image}
+                alt={event.title}
+                width={1600}
+                height={900}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+                className="
+                  w-full
+                  h-auto
+                  max-h-[75vh]
+                  object-contain
+                  mx-auto
+                  rounded-3xl
+                  md:shadow-lg md:shadow-blue-900/10
+                "
+                priority
+              />
+            </div>
           </div>
 
           {/* Content Grid */}
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+            {/* Description */}
             <div className="lg:w-2/3">
               <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                 About the Event
-                <div className="h-px bg-slate-200 grow ml-4" />
+                <span className="h-px bg-slate-200 grow ml-4" />
               </h2>
-              <div className="prose prose-lg prose-slate max-w-none text-slate-600 leading-relaxed">
+
+              <div className="prose prose-base sm:prose-lg prose-slate max-w-none text-slate-600 leading-relaxed">
                 {Array.isArray(event.description)
-                  ? event.description.map((p, i) => <p className="mb-3" key={i}>{p}</p>)
+                  ? event.description.map((p, i) => (
+                      <p key={i} className="mb-4">
+                        {p}
+                      </p>
+                    ))
                   : <p>{event.description}</p>}
               </div>
             </div>
 
+            {/* Sidebar */}
             {(event.date || event.location || event.attendees) && (
               <div className="lg:w-1/3">
-                <div className="sticky top-24 space-y-6">
-                  <div className="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100">
+                <div className="lg:sticky lg:top-24 space-y-6">
+                  <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 border border-slate-100">
                     <h3 className="text-lg font-bold text-slate-900 mb-6 border-b border-slate-100 pb-4">
                       Event Details
                     </h3>
+
                     <div className="space-y-6">
                       {event.date && (
-                        <div className="flex items-start gap-4 group">
+                        <div className="flex items-start gap-4">
                           <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl">
                             <Calendar size={24} />
                           </div>
                           <div>
-                            <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">Date</p>
-                            <p className="text-slate-900 font-semibold">{event.date}</p>
+                            <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">
+                              Date
+                            </p>
+                            <p className="text-slate-900 font-semibold">
+                              {event.date}
+                            </p>
                           </div>
                         </div>
                       )}
+
                       {event.location && (
-                        <div className="flex items-start gap-4 group">
+                        <div className="flex items-start gap-4">
                           <div className="p-3 bg-purple-50 text-purple-600 rounded-2xl">
                             <MapPin size={24} />
                           </div>
                           <div>
-                            <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">Location</p>
-                            <p className="text-slate-900 font-semibold">{event.location}</p>
+                            <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">
+                              Location
+                            </p>
+                            <p className="text-slate-900 font-semibold">
+                              {event.location}
+                            </p>
                           </div>
                         </div>
                       )}
+
                       {event.attendees && (
-                        <div className="flex items-start gap-4 group">
+                        <div className="flex items-start gap-4">
                           <div className="p-3 bg-green-50 text-green-600 rounded-2xl">
                             <Users size={24} />
                           </div>
                           <div>
-                            <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">Attendees</p>
-                            <p className="text-slate-900 font-semibold">{event.attendees}</p>
+                            <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">
+                              Attendees
+                            </p>
+                            <p className="text-slate-900 font-semibold">
+                              {event.attendees}
+                            </p>
                           </div>
                         </div>
                       )}
@@ -130,6 +186,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
           </div>
         </div>
       </main>
+
       <Footer />
     </div>
   );

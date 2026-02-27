@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { easeOut } from "framer-motion"
+import { easeOut } from "framer-motion";
 import { events } from "@/data/events";
 
 const containerVariants = {
@@ -25,26 +25,35 @@ const cardVariants = {
   },
 };
 
+/**
+ * Named presets → real CSS object-position values
+ * You can freely extend this list later
+ */
+const imagePositionMap: Record<string, string> = {
+  top: "50% 0%",
+  center: "50% 50%",
+  bottom: "50% 100%",
+  poster: "50% 15%",
+  face: "50% 25%",
+};
+
 export default function PastEvents() {
   return (
-    <section id="events" className="py-20 px-10 md:py-24 relative overflow-hidden">
+    <section
+      id="events"
+      className="py-20 px-10 md:py-24 relative overflow-hidden"
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light pointer-events-none" />
       <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-300 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
-              Live Events
-            </h2>
-            {/* <p className="text-slate-600 text-base md:text-lg">
-              Moments from past gatherings and ongoing initiatives that bring our community together.
-            </p> */}
-          </div>
+        <div className="mb-10">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Past events
+          </h2>
         </div>
-
 
         {/* Cards */}
         <motion.div
@@ -52,82 +61,102 @@ export default function PastEvents() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
+          className="
+            flex gap-4 overflow-x-auto snap-x snap-mandatory pb-8
+            md:grid md:grid-cols-2 lg:grid-cols-3
+            md:overflow-visible md:pb-0
+            scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0
+          "
         >
-          {events.map((event) => (
-            <motion.div
-              key={event.id}
-              variants={cardVariants}
-              whileTap={{ scale: 0.97 }}
-              className="
-                group bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm
-                min-w-[75vw] md:min-w-0 snap-center flex flex-col
-              "
-            >
-              <Link href={`/events/${event.id}`} className="flex flex-col h-full">
-                {/* Image */}
-                <div className="relative h-52 md:h-56 w-full">
-                  {event.image && (
-                    <Image
-                      src={event.image}
-                      alt={event.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover"
-                    />
-                  )}
+          {[...events].reverse().map((event) => {
+            const objectPosition =
+              imagePositionMap[event.imagePosition ?? ""] ??
+              event.imagePosition ??
+              "center";
 
-                  <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
-
-                  <div className="absolute top-3 left-3 right-3 flex justify-between">
-                    {event.date && (
-                      <span className="bg-white/95 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1">
-                        <Calendar size={12} className="text-blue-600" />
-                        {event.date}
-                      </span>
+            return (
+              <motion.div
+                key={event.id}
+                variants={cardVariants}
+                whileTap={{ scale: 0.97 }}
+                className="
+                  group bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm
+                  min-w-[75vw] md:min-w-0 snap-center flex flex-col
+                "
+              >
+                <Link
+                  href={`/events/${event.id}`}
+                  className="flex flex-col h-full"
+                >
+                  {/* Image */}
+                  <div className="relative h-52 md:h-56 w-full">
+                    {event.image && (
+                      <Image
+                        src={event.image}
+                        alt={event.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover"
+                        style={{ objectPosition }}
+                      />
                     )}
 
-                    {event.category && (
-                      <span className="bg-blue-600/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center">
-                        {event.category}
-                      </span>
-                    )}
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
+
+                    {/* Badges */}
+                    <div className="absolute top-3 left-3 right-3 flex justify-between">
+                      {event.date && (
+                        <span className="bg-white/95 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 ">
+                          <Calendar size={12} className="text-blue-600" />
+                          {event.date}
+                        </span>
+                      )}
+
+                      {event.category && (
+                        <span className="bg-blue-600/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center">
+                          {event.category}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                {/* Content */}
-                <div className="p-6 flex flex-col grow">
-                  {event.title && (
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-1">
-                      {event.title}
-                    </h3>
-                  )}
-
-                  {event.description && (
-                    <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2 grow">
-                      {event.description}
-                    </p>
-                  )}
-
-                  <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
-                    {event.location && (
-                      <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
-                        <MapPin size={14} className="text-blue-500" />
-                        {event.location}
-                      </div>
+                  {/* Content */}
+                  <div className="p-6 flex flex-col grow">
+                    {event.title && (
+                      <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-1">
+                        {event.title}
+                      </h3>
                     )}
 
-                    {event.attendees && (
-                      <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
-                        <Users size={14} className="text-blue-500" />
-                        {event.attendees}
-                      </div>
+                    {event.description && (
+                      <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2 grow">
+                        {Array.isArray(event.description)
+                          ? event.description[0]
+                          : event.description}
+                      </p>
                     )}
+
+                    <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
+                      {event.location && (
+                        <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
+                          <MapPin size={14} className="text-blue-500" />
+                          {event.location}
+                        </div>
+                      )}
+
+                      {event.attendees && (
+                        <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
+                          <Users size={14} className="text-blue-500" />
+                          {event.attendees}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                </Link>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
 
