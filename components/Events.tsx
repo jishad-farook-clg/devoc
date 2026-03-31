@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Users } from "lucide-react";
+import { Calendar, MapPin, Users, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { easeOut } from "framer-motion";
 import { events } from "@/data/events";
+import { useRef } from "react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,10 +26,6 @@ const cardVariants = {
   },
 };
 
-/**
- * Named presets → real CSS object-position values
- * You can freely extend this list later
- */
 const imagePositionMap: Record<string, string> = {
   top: "50% 0%",
   center: "50% 50%",
@@ -38,15 +35,31 @@ const imagePositionMap: Record<string, string> = {
 };
 
 export default function PastEvents() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const handleScrollRight = () => {
+    if (scrollRef.current) {
+      const scrollAmount = window.innerWidth * 0.75; 
+      
+      scrollRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section
       id="events"
       className="py-20 px-10 md:py-24 relative overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 opacity-20 mix-blend-soft-light pointer-events-none"  style={{
+      <div 
+        className="absolute inset-0 opacity-20 mix-blend-soft-light pointer-events-none"  
+        style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }} />
+        }} 
+      />
       <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-300 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
@@ -57,109 +70,130 @@ export default function PastEvents() {
           </h2>
         </div>
 
-        {/* Cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="
-            flex gap-4 overflow-x-auto snap-x snap-mandatory pb-8
-            md:grid md:grid-cols-2 lg:grid-cols-3
-            md:overflow-visible md:pb-0
-            scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0
-          "
-        >
-          {[...events].reverse().map((event) => {
-            const objectPosition =
-              imagePositionMap[event.imagePosition ?? ""] ??
-              event.imagePosition ??
-              "center";
+        {/* Scroll Container Wrapper */}
+        <div className="relative">
+          
+          {/* Mobile Overlay Swipe Indicator */}
+          <div 
+            className="absolute -right-5 top-0 bottom-8 w-[50%] bg-gradient-to-l from-slate-50/80 via-slate-50/10 to-transparent z-20 md:hidden flex items-center justify-end pr-2 pointer-events-none"
+          >
 
-            return (
-              <motion.div
-                key={event.id}
-                variants={cardVariants}
-                whileTap={{ scale: 0.97 }}
-                className="
-                  group bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm
-                  min-w-[75vw] md:min-w-0 snap-center flex flex-col
-                "
-              >
-                <Link
-                  href={`/events/${event.id}`}
-                  className="flex flex-col h-full"
+            <motion.button
+              onClick={handleScrollRight}
+              animate={{ x: [0, -8, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+              className="bg-white shadow-md rounded-full p-2 text-blue-600 flex items-center justify-center border border-slate-200 backdrop-blur-sm pointer-events-auto active:scale-95"
+            >
+              <ArrowRight size={20} />
+            </motion.button>
+          </div>
+
+          {/* Cards */}
+          <motion.div
+            ref={scrollRef}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="
+              flex gap-4 overflow-x-auto snap-x snap-mandatory pb-8
+              md:grid md:grid-cols-2 lg:grid-cols-3
+              md:overflow-visible md:pb-0
+              scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0
+            "
+          >
+            {[...events].reverse().map((event) => {
+              const objectPosition =
+                imagePositionMap[event.imagePosition ?? ""] ??
+                event.imagePosition ??
+                "center";
+
+              return (
+                <motion.div
+                  key={event.id}
+                  variants={cardVariants}
+                  whileTap={{ scale: 0.97 }}
+                  className="
+                    group bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm
+                    min-w-[75vw] md:min-w-0 snap-center flex flex-col
+                  "
                 >
-                  {/* Image */}
-                  <div className="relative h-52 md:h-56 w-full">
-                    {event.image && (
-                      <Image
-                        src={event.image}
-                        alt={event.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover"
-                        style={{ objectPosition }}
-                      />
-                    )}
-
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
-
-                    {/* Badges */}
-                    <div className="absolute top-3 left-3 right-3 flex justify-between">
-                      {event.date && (
-                        <span className="bg-white/95 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 ">
-                          <Calendar size={12} className="text-blue-600" />
-                          {event.date}
-                        </span>
+                  <Link
+                    href={`/events/${event.id}`}
+                    className="flex flex-col h-full"
+                  >
+                    {/* Image */}
+                    <div className="relative h-52 md:h-56 w-full">
+                      {event.image && (
+                        <Image
+                          src={event.image}
+                          alt={event.title}
+                          fill
+                          priority={event.id === 1}
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className="object-cover"
+                          style={{ objectPosition }}
+                        />
                       )}
 
-                      {event.category && (
-                        <span className="bg-blue-600/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center">
-                          {event.category}
-                        </span>
-                      )}
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
+
+                      {/* Badges */}
+                      <div className="absolute top-3 left-3 right-3 flex justify-between">
+                        {event.date && (
+                          <span className="bg-white/95 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 ">
+                            <Calendar size={12} className="text-blue-600" />
+                            {event.date}
+                          </span>
+                        )}
+
+                        {event.category && (
+                          <span className="bg-blue-600/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center">
+                            {event.category}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-6 flex flex-col grow">
-                    {event.title && (
-                      <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-1">
-                        {event.title}
-                      </h3>
-                    )}
-
-                    {event.description && (
-                      <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2 grow">
-                        {Array.isArray(event.description)
-                          ? event.description[0]
-                          : event.description}
-                      </p>
-                    )}
-
-                    <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
-                      {event.location && (
-                        <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
-                          <MapPin size={14} className="text-blue-500" />
-                          {event.location}
-                        </div>
+                    {/* Content */}
+                    <div className="p-6 flex flex-col grow">
+                      {event.title && (
+                        <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-1">
+                          {event.title}
+                        </h3>
                       )}
 
-                      {event.attendees && (
-                        <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
-                          <Users size={14} className="text-blue-500" />
-                          {event.attendees}
-                        </div>
+                      {event.description && (
+                        <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2 grow">
+                          {Array.isArray(event.description)
+                            ? event.description[0]
+                            : event.description}
+                        </p>
                       )}
+
+                      <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
+                        {event.location && (
+                          <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
+                            <MapPin size={14} className="text-blue-500" />
+                            {event.location}
+                          </div>
+                        )}
+
+                        {event.attendees && (
+                          <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
+                            <Users size={14} className="text-blue-500" />
+                            {event.attendees}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
       </div>
 
       {/* Hide Scrollbar */}
