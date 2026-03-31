@@ -48,6 +48,12 @@ export default function Navbar() {
                         About
                     </Link>
                     <Link
+                        href={"#courses"}
+                        className="text-slate-600 hover:text-primary transition-colors font-medium"
+                        >
+                        Courses
+                    </Link>
+                    <Link
                         href={"#events"}
                         className="text-slate-600 hover:text-primary transition-colors font-medium"
                         >
