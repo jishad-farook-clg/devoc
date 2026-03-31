@@ -18,7 +18,9 @@ export default function CTA() {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800" />
           
           {/* Decorative Grid Pattern */}
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 mix-blend-overlay" />
+          <div className="absolute inset-0 opacity-20 brightness-100 mix-blend-overlay"  style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+        }} />
           <div className="absolute inset-0 opacity-10" 
             style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '30px 30px' }} 
           ></div>
@@ -61,23 +63,28 @@ export default function CTA() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
                 
                 {/* Primary Button */}
-                <Link
-                  href="/register"
-                  className="group relative w-full sm:w-auto px-8 py-4 bg-white text-blue-700 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] hover:-translate-y-1 flex items-center justify-center gap-2"
-                >
-                  Apply Now
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                <motion.div whileTap={{ scale: 0.97 }} className="inline-block">
+                  <Link
+                    href="/register"
+                    className="group relative w-full sm:w-auto px-8 py-4 bg-white text-blue-700 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] flex items-center justify-center gap-2"
+                    >
+                    Apply Now
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
 
                 {/* Secondary Button */}
-                <Link
-                  href="/files/brochure.pdf"
-                  download="brochure.pdf"
-                  className="group w-full sm:w-auto px-8 py-4 bg-transparent border border-blue-300/30 text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-2"
-                >
-                  Download Brochure
-                  <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-                </Link>
+                <motion.div whileTap={{ scale: 0.97 }} className="inline-block">
+                  <Link
+                    href="/files/brochure.pdf"
+                    download="brochure.pdf"
+                    className="group w-full sm:w-auto px-8 py-4 bg-transparent border border-blue-300/30 text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+                    >
+                    Download Brochure
+                    <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+                  </Link>
+                </motion.div>
+
               </div>
 
               {/* Trust Footer */}

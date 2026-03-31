@@ -67,10 +67,7 @@ export default function Courses() {
             <motion.div
               key={course.id}
               variants={cardVariants}
-              whileTap={{
-                scale: 0.97,
-                transition: { duration: 0.1, ease: "easeOut" },
-              }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => router.push(`/course/${course.id}`)}
               className="group cursor-pointer bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm w-full flex flex-col hover:shadow-md transition-all duration-300"
             >
@@ -88,7 +85,7 @@ export default function Courses() {
                 <div className="flex flex-col grow">
                   {/* Title */}
                   {course.title && (
-                    <h3 className="text-xl md:text-2xl font-bold text-[#1E3A8A] mb-3 line-clamp-2 leading-tight group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl md:text-2xl font-bold text-primary mb-3 line-clamp-2 leading-tight group-hover:text-blue-600 transition-colors">
                       {course.title}
                     </h3>
                   )}

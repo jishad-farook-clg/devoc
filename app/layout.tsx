@@ -52,8 +52,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>
+    <html lang="en" data-scroll-behavior="smooth">
+      <body className={`${inter.className} antialiased selection:bg-purple-200 selection:text-purple-900`}>
         <LoadingProvider>
           {children}
         </LoadingProvider>

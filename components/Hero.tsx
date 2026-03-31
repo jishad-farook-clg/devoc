@@ -47,7 +47,6 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            // Responsive text sizing: text-4xl on mobile, 7xl on desktop
                             className="text-4xl sm:text-5xl lg:text-7xl font-bold text-slate-900 leading-[1.1] mb-6"
                         >
                             Learn Coding. <br />
@@ -75,14 +74,20 @@ export default function Hero() {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
                         >
-                            <Link href="/register" className="w-full sm:w-auto px-8 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-600/25 flex items-center justify-center gap-2 group">
-                                Start Learning Today
-                                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-                            </Link>
-                            <Link href={"/files/brochure.pdf"} download={"brochure.pdf"} className="w-full sm:w-auto px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
-                                Download Brochure
-                                <Download className="group-hover:translate-x-1 transition-transform" />
-                            </Link>
+
+                            <motion.div whileTap={{ scale: 0.97 }} className="inline-block w-full sm:w-auto ">
+                                <Link href="/register" className="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-600/25 flex items-center justify-center gap-2 group">
+                                    Start Learning Today
+                                    <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </motion.div>
+                            
+                            <motion.div whileTap={{ scale: 0.97 }} className="inline-block w-full sm:w-auto">
+                                <Link href={"/files/brochure.pdf"} download={"brochure.pdf"} className="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
+                                    Download Brochure
+                                    <Download className="group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </motion.div>
                         </motion.div>
                     </div>
 

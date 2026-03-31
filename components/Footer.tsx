@@ -49,6 +49,16 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
+                                <Link href={"#courses"} className="hover:text-white transition-colors">
+                                    Courses
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href={"#events"} className="hover:text-white transition-colors">
+                                    Events
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href={"/contact"} className="hover:text-white transition-colors">
                                     Contact Us
                                 </Link>
@@ -93,7 +103,7 @@ export default function Footer() {
                 </div>
 
                 <div className="pt-8 border-t border-slate-800 text-center text-sm text-slate-500">
-                    <p>&copy; {new Date().getFullYear()} DeVoc Education. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} DeVoc Academy. All rights reserved.</p>
                 </div>
             </div>
         </footer>

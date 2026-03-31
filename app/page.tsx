@@ -13,7 +13,7 @@ import Events from "@/components/Events";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-50 selection:bg-purple-200 selection:text-purple-900">
+    <main className="min-h-screen bg-slate-50">
       <Navbar />
       <Hero />
       <Features />

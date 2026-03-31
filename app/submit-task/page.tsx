@@ -63,7 +63,7 @@ export default function VideoSubmissionPage() {
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold text-primary">
             {/* Replace with your logo path */}
-            <Image src={"/NavLogo2.png"} width={100} height={100} alt="Logo"/>
+            <Image src={"/NavLogo2.png"} width={100} height={100} style={{ height: "auto", width: "auto" }} alt="Logo"/>
           </Link>
           <Link
             href="/"

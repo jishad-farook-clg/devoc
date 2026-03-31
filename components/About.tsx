@@ -49,12 +49,15 @@ export default function AboutSecond() {
                             ))}
                         </div>
 
-                        <Link 
-                            href="/contact" 
-                            className="inline-block px-8 py-3 bg-white text-primary border border-primary/20 hover:border-primary hover:bg-blue-50 transition-all rounded-xl font-bold shadow-sm"
-                        >
-                            Contact Us
-                        </Link>
+                        <motion.div whileTap={{ scale: 0.97 }} className="inline-block">
+                            <Link 
+                                href="/contact" 
+                                className="inline-block px-8 py-3 bg-white text-primary border border-primary/20 hover:border-primary hover:bg-blue-50 transition-all rounded-xl font-bold shadow-sm"
+                                >
+                                Contact Us
+                            </Link>
+                        </motion.div>
+                        
                     </motion.div>
 
                     {/* Right Side: The 4 Verticals Grid */}

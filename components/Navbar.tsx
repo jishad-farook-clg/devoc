@@ -31,44 +31,55 @@ export default function Navbar() {
                         DeVoc
                     </span> */}
                     {/* <Image src={"/NavLogo.png"} width={100} height={100} alt=""/> */}
-                          <Image
-                            src="/NavLogo2.png"
-                            width={100}
-                            height={100}
-                            alt="Logo"
-                            />
+                    <Image
+                    src="/NavLogo2.png"
+                    width={100}
+                    height={100}
+                    style={{ height: "auto", width: "auto" }}
+                    alt="Logo"
+                    />
                 </Link>
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center gap-8">
                     <Link
                         href={"/#about"}
+                        scroll={true}
                         className="text-slate-600 hover:text-primary transition-colors font-medium"
                         >
                         About
                     </Link>
                     <Link
-                        href={"#courses"}
+                        href={"/#courses"}
+                        scroll={true}
                         className="text-slate-600 hover:text-primary transition-colors font-medium"
                         >
                         Courses
                     </Link>
                     <Link
-                        href={"#events"}
+                        href={"/#events"}
+                        scroll={true}
                         className="text-slate-600 hover:text-primary transition-colors font-medium"
                         >
                         Events
                     </Link>
                     <Link
                         href={"/contact"}
+                        scroll={true}
                         className="text-slate-600 hover:text-primary transition-colors font-medium"
                         >
                         Contact
                     </Link>
                    
-                    <Link href="/register" className="bg-primary text-white px-6 py-2.5 rounded-full font-medium hover:bg-blue-800 transition-all shadow-lg hover:shadow-xl flex items-center gap-2">
+
+                <motion.div whileTap={{ scale: 0.97 }} className="inline-block">
+                    <Link 
+                    href="/register" 
+                    className="bg-blue-600 text-white px-6 py-2.5 rounded-full font-medium hover:bg-blue-800 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+                    >
                         Join Now <ChevronRight size={18} />
                     </Link>
+                </motion.div>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -91,29 +102,41 @@ export default function Navbar() {
                     >
                             <Link
                                 href={"/#about"}
-                                className="text-lg text-slate-700 font-medium py-2 border-b border-slate-50"
+                                scroll={true}
+                                className="mx-2 text-lg text-slate-700 font-medium py-2 border-b border-slate-50"
                                 onClick={() => setIsOpen(false)}
                             >
                                 About
                             </Link>
                             <Link
-                                href={"#events"}
-                                className="text-lg text-slate-700 font-medium py-2 border-b border-slate-50"
+                                href={"/#courses"}
+                                scroll={true}
+                                className="mx-2 text-lg text-slate-700 font-medium py-2 border-b border-slate-50"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Courses
+                            </Link>
+                            <Link
+                                href={"/#events"}
+                                scroll={true}
+                                className="mx-2 text-lg text-slate-700 font-medium py-2 border-b border-slate-50"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Events
                             </Link>
                             <Link
                                 href={"/contact"}
-                                className="text-lg text-slate-700 font-medium py-2 border-b border-slate-50"
+                                scroll={true}
+                                className="mx-2 text-lg text-slate-700 font-medium py-2 border-b border-slate-50"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Contact
                             </Link>
-
-                            <Link href="/register" className="bg-primary text-white w-full py-3 rounded-xl font-medium mt-4 text-center block">
-                                Join Now
-                            </Link>
+                            <motion.div whileTap={{ scale: 0.97 }}>
+                                <Link href="/register" className="bg-blue-600 hover:bg-blue-800 text-white w-full py-3 rounded-xl font-medium mt-4 text-center block">
+                                    Join Now
+                                </Link>
+                            </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>

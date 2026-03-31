@@ -50,7 +50,7 @@ export default function ContactPage() {
       <nav className="py-6 px-6 bg-white border-b border-slate-100">
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold text-primary">
-            <Image src={"/NavLogo2.png"} width={100} height={100} alt=""/>
+            <Image src={"/NavLogo2.png"} width={100} height={100} style={{ height: "auto", width: "auto" }} alt=""/>
           </Link>
           <Link
             href="/"
@@ -106,12 +106,15 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <button
-                  disabled={loading}
-                  className="w-full py-4 bg-primary text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer"
-                >
-                  {loading ? <Loader2 className="animate-spin" /> : "Send Message"}
-                </button>
+                <motion.div whileTap={{ scale: 0.97 }}>
+                  <button
+                    disabled={loading}
+                    className="w-full py-4 bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer"
+                  >
+                    {loading ? <Loader2 className="animate-spin" /> : "Send Message"}
+                  </button>
+                </motion.div>
+
               </form>
             </motion.div>
           ) : (
@@ -132,12 +135,15 @@ export default function ContactPage() {
                 Thank you for reaching out. Our team will get back to you shortly.
               </p>
 
-              <Link
-                href="/"
-                className="inline-block w-full py-3 bg-slate-900 text-white rounded-xl font-bold"
-              >
-                Go Home
-              </Link>
+              <motion.div whileTap={{ scale: 0.97 }}>
+                <Link
+                  href="/"
+                  className="inline-block w-full py-3 bg-slate-900 text-white rounded-xl font-bold"
+                >
+                  Go Home
+                </Link>
+              </motion.div>
+
             </motion.div>
           )}
         </div>

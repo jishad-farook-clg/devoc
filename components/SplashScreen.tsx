@@ -24,7 +24,7 @@ const SplashScreen = () => {
         className="relative"
       >
         {/* Replace with your Logo Image */}
-        <Image src={"/favicon.ico"} className="" width={100} height={100} alt=""/>
+        <Image src={"/favicon.ico"} loading="eager" width={100} height={100} alt=""/>
       </motion.div>
     </motion.div>
   );
