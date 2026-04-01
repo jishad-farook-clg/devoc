@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, Loader2 } from "lucide-react";
 import Image from "next/image";
+import Footer from "@/components/Footer";
 
 export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
@@ -185,6 +186,7 @@ export default function RegisterPage() {
           )}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

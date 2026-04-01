@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { CheckCircle2, Loader2, ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import Footer from "@/components/Footer";
 
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
@@ -65,9 +66,9 @@ export default function ContactPage() {
         <div className="w-full max-w-lg">
           {!success ? (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-100 relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-100 relative"
             >
               <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-primary to-secondary" />
 
@@ -82,14 +83,14 @@ export default function ContactPage() {
                   name="name"
                   value={form.name}
                   onChange={handleChange}
-                />
+                  />
 
                 <Input
                   label="Phone Number"
                   name="phone"
                   value={form.phone}
                   onChange={handleChange}
-                />
+                  />
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-1">
@@ -103,14 +104,14 @@ export default function ContactPage() {
                     value={form.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border outline-none resize-none"
-                  />
+                    />
                 </div>
 
                 <motion.div whileTap={{ scale: 0.97 }}>
                   <button
                     disabled={loading}
                     className="w-full py-4 bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer"
-                  >
+                    >
                     {loading ? <Loader2 className="animate-spin" /> : "Send Message"}
                   </button>
                 </motion.div>
@@ -119,9 +120,9 @@ export default function ContactPage() {
             </motion.div>
           ) : (
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="bg-white p-10 rounded-3xl shadow-xl text-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white p-10 rounded-3xl shadow-xl text-center"
             >
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle2 size={40} className="text-green-600" />
@@ -148,6 +149,7 @@ export default function ContactPage() {
           )}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
