@@ -4,9 +4,10 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, phone, message } = body;
 
-    if (!name || !phone || !message) {
+    const { name, email, phone, institution, class_or_year} = body;
+
+    if (!name || !email || !phone || !institution  || !class_or_year) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -33,26 +34,27 @@ export async function POST(req: Request) {
       hour12: true,
     });
 
-
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID!,
-      range: "contact!A",
+      range: "crash-course!A1",
       valueInputOption: "RAW",
       requestBody: {
         values: [[
-          name,
-          phone,
-          message,
-          timestamp,
+            name,
+            email,
+            phone,
+            institution,
+            class_or_year,
+            timestamp,
         ]],
       },
     });
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Contact Error:", error);
+    console.error("Registration Error:", error);
     return NextResponse.json(
-      { error: "Failed to submit contact form" },
+      { error: "Failed to submit registration" },
       { status: 500 }
     );
   }

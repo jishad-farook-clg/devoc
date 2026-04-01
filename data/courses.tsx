@@ -73,6 +73,6 @@ export const courses = [
     duration: "2 Weeks",
     // lessons: 5,
     mode: "Online",
-    link: "https://docs.google.com/forms/d/e/1FAIpQLScoZQ1qlyUBvKTkZJgeHLABYSuq2k5o-QQocQdEXJlW_NMMbA/viewform",
+    link: "/crash-course",
   },
 ];

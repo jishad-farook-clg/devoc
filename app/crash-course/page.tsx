@@ -14,11 +14,10 @@ export default function RegisterPage() {
     name: "",
     email: "",
     phone: "",
-    college: "",
-    department: "",
-    // course: "",
+    institution : "",
+    class_or_year: "",
   });
-
+																	
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -30,7 +29,7 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/register", {
+      const res = await fetch("/api/crash-course", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -73,9 +72,9 @@ export default function RegisterPage() {
             >
               <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-primary to-secondary" />
 
-              <h1 className="text-3xl font-bold mb-2">Join Next Cohort</h1>
+              <h1 className="text-3xl font-bold mb-2">Enroll in the Crash Course</h1>
               <p className="text-slate-600 mb-8">
-                Start your journey to becoming a professional developer.
+                Learn web design basics and build a modern website using AI tools. No experience needed.
               </p>
 
               <form onSubmit={handleSignup} className="space-y-5">
@@ -108,50 +107,29 @@ export default function RegisterPage() {
                   />
 
                 <Input
-                  id="college"
-                  label="College"
-                  name="college"
-                  value={form.college}
+                  id="institution"
+                  label="Institution Name"
+                  name="institution"
+                  value={form.institution}
                   onChange={handleChange}
                   required
                 />
 
                 <Input
-                  id="department"
-                  label="Department"
-                  name="department"
-                  value={form.department}
+                  id="class_or_year"
+                  label="Class or Year"
+                  name="class_or_year"
+                  value={form.class_or_year}
                   onChange={handleChange}
                   required
                 />
-                
-                {/* <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Interested Course
-                  </label>
-                  <select
-                    name="course"
-                    required
-                    value={form.course}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border"
-                  >
-                    <option value="">Select course</option>
-                    <option>Web Designing</option>
-                    <option>Mobile App Development</option>
-                    <option>Backend Development</option>
-                    <option>Django</option>
-                    <option>I didn&apos;t choose yet</option>
-                  </select>
-                </div> */}
-
-                
+                          
                 <motion.div whileTap={{ scale: 0.97 }}>
                   <button
                     disabled={loading}
                     className="w-full py-4 bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer"
                     >
-                    {loading ? <Loader2 className="animate-spin" /> : "Register"}
+                    {loading ? <Loader2 className="animate-spin" /> : "Join Course"}
                   </button>
                 </motion.div>
 
