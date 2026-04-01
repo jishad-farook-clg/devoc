@@ -6,32 +6,35 @@ import Link from "next/link";
 
 export default function CTA() {
   return (
-    // CHANGE IS HERE: 
-    // Replaced 'bg-white' with 'bg-gradient-to-b from-slate-50 to-white'
-    // This matches the bottom of your testimonial section and fades to white.
     <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
       <div className="container mx-auto px-4 md:px-6">
         
-        <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/20">
+        <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/20 border border-white/10">
           
-          {/* Background: Gradient & Tech Grid */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800" />
-          
-          {/* Decorative Grid Pattern */}
-          <div className="absolute inset-0 opacity-20 brightness-100 mix-blend-overlay"  style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }} />
-          <div className="absolute inset-0 opacity-10" 
-            style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '30px 30px' }} 
-          ></div>
+          {/* Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-700 to-indigo-900" />
 
-          {/* Glowing Orbs */}
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-blue-400/30 rounded-full blur-[100px]" />
-          <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/4 w-96 h-96 bg-indigo-400/30 rounded-full blur-[100px]" />
+          {/* Soft Light Overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15),transparent_40%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.1),transparent_40%)]" />
 
-          <div className="relative z-10 px-6 py-16 md:py-24 md:px-12 text-center">
+          {/* Grid */}
+          <div className="absolute inset-0 opacity-10"
+            style={{
+              backgroundImage: "radial-gradient(#fff 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
+
+          {/* Glow blobs */}
+          <div className="absolute top-[-80px] right-[-80px] w-[300px] h-[300px] bg-blue-400/30 rounded-full blur-[120px]" />
+          <div className="absolute bottom-[-80px] left-[-80px] w-[300px] h-[300px] bg-indigo-400/30 rounded-full blur-[120px]" />
+
+          {/* Content */}
+          <div className="relative z-10 px-6 py-16 md:px-12 md:py-24 text-center backdrop-blur-[2px]">
+            
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
@@ -39,47 +42,51 @@ export default function CTA() {
             >
               
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/30 border border-blue-400/30 text-blue-50 text-sm font-semibold mb-8 backdrop-blur-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-blue-100 text-sm font-semibold mb-8 backdrop-blur-md">
                 <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                 </span>
-                <span>New Batch Starting Soon</span>
+                New Batch Starting Soon
               </div>
 
               {/* Headline */}
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-                Start Your Tech Journey <br className="hidden md:block" />
-                <span className="text-blue-200">Without The Risk.</span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                Launch Your Tech Career{" "}
+                <span className="block text-blue-200">
+                  Without Fear or Risk
+                </span>
               </h2>
 
               {/* Subtext */}
-              <p className="text-lg md:text-xl text-blue-100 mb-10 leading-relaxed max-w-2xl mx-auto">
-                Join the hybrid learning revolution. Learn from industry experts, 
-                build real projects and grow yourself.
+              <p className="text-lg md:text-xl text-blue-100/90 mb-10 max-w-2xl leading-relaxed">
+                Step into hybrid learning where you gain insights from industry experts, build real-world projects and continuously grow.
               </p>
 
-              {/* Buttons Container */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-4">
                 
-                {/* Primary Button */}
-                <motion.div whileTap={{ scale: 0.97 }} className="inline-block">
+                {/* Primary */}
+                <motion.div whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
                   <Link
                     href="/register"
-                    className="group relative w-full sm:w-auto px-8 py-4 bg-white text-blue-700 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] flex items-center justify-center gap-2"
-                    >
-                    Apply Now
+                    className="group relative w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-blue-700 font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-all"
+                  >
+                    <span className="relative z-10">Apply Now</span>
+
+                    <span className="absolute inset-0 rounded-xl bg-white opacity-0 group-hover:opacity-20 blur transition-all" />
+
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </motion.div>
 
-                {/* Secondary Button */}
-                <motion.div whileTap={{ scale: 0.97 }} className="inline-block">
+                {/* Secondary */}
+                <motion.div whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
                   <Link
                     href="/files/brochure.pdf"
-                    download="brochure.pdf"
-                    className="group w-full sm:w-auto px-8 py-4 bg-transparent border border-blue-300/30 text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-2"
-                    >
+                    download
+                    className="group w-full sm:w-auto px-8 py-4 rounded-xl border border-white/80 text-white font-semibold text-lg flex items-center justify-center gap-2 hover:bg-white/10 transition-all"
+                  >
                     Download Brochure
                     <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                   </Link>
@@ -87,13 +94,19 @@ export default function CTA() {
 
               </div>
 
-              {/* Trust Footer */}
-              <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-3 text-blue-200/80 text-sm font-medium">
+              {/* Trust Points */}
+              <div className="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-blue-100/90 text-sm font-medium">
                 <span className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-green-400" /> No IT Background required
+                  <CheckCircle2 size={16} className="text-green-400" />
+                  No IT Background Required
                 </span>
                 <span className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-green-400" /> 100% Practical Learning
+                  <CheckCircle2 size={16} className="text-green-400" />
+                  Practical Learning
+                </span>
+                <span className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-green-400" />
+                  Job-Focused Curriculum
                 </span>
               </div>
 
