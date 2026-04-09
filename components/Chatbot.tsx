@@ -106,11 +106,8 @@ export default function Chatbot() {
         else if (lowerText.includes("internship") || lowerText.includes("job") || lowerText.includes("placement")) {
             responseText = "We provide opportunities for **Internships** and **Real-world challenges** to ensure you are industry-ready.";
         }
-        else if (lowerText.includes("course") || lowerText.includes("offer")) {
-            responseText = "We offer a **Project-Based Coding Program (16 weeks)**, a **Tech Career Workshop (3.5 hours)**, and an **AI Web Designing (2 weeks)**. Which one would you like to know more about?";
-        }
         else if (lowerText.includes("duration") || lowerText.includes("how long")) {
-            responseText = "Our programs range from **3.5 hours workshops** to **16-week full programs**, depending on your learning goals.";
+            responseText = "On average **16-week** weeks, depending on your learning goals.";
         }
         else if (lowerText.includes("beginner") || lowerText.includes("experience") || lowerText.includes("start from zero")) {
             responseText = "No worries! Our programs are designed for **complete beginners**. We guide you step-by-step from basics to advanced projects.";
@@ -118,12 +115,15 @@ export default function Chatbot() {
         else if (lowerText.includes("mentor") || lowerText.includes("guidance")) {
             responseText = "You will receive **1:1 mentorship, continuous reviews, and guidance** throughout your learning journey.";
         }
-        else if (lowerText.includes("workshop")) {
-            responseText = "Our workshop is a **3.5-hour interactive session** where you explore tech careers, learn web basics, and build a simple website using AI.";
-        }
-        else if (lowerText.includes("ai") || lowerText.includes("web designing") || lowerText.includes("ai web designing")) {
-            responseText = "Our **AI-Powered Web Designing Course** is a 2-week crash course where you learn HTML, CSS, JavaScript, and build a live website using AI tools.";
-        }
+        // else if (lowerText.includes("course") || lowerText.includes("offer")) {
+        //     responseText = "We offer a **Project-Based Coding Program (16 weeks)**, a **Tech Career Workshop (3.5 hours)**, and an **AI Web Designing (2 weeks)**. Which one would you like to know more about?";
+        // }
+        // else if (lowerText.includes("workshop")) {
+        //     responseText = "Our workshop is a **3.5-hour interactive session** where you explore tech careers, learn web basics, and build a simple website using AI.";
+        // }
+        // else if (lowerText.includes("ai") || lowerText.includes("web designing") || lowerText.includes("ai web designing")) {
+        //     responseText = "Our **AI-Powered Web Designing Course** is a 2-week crash course where you learn HTML, CSS, JavaScript, and build a live website using AI tools.";
+        // }
         else if (lowerText.includes("interview") || lowerText.includes("job preparation")) {
             responseText = "We help you prepare with **mock interviews, communication training, and real-world challenges**.";
         }
