@@ -3,35 +3,28 @@
 import { InputHTMLAttributes, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { CheckCircle2, Loader2, ArrowLeft, Youtube, AlertCircle } from "lucide-react";
+import { CheckCircle2, Loader2, ArrowLeft, Link as LinkIcon, Code } from "lucide-react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 
-export default function VideoSubmissionPage() {
+export default function WebDesignSubmission() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   
   const [form, setForm] = useState({
     name: "",
-    email: "",
     phone: "",
     day: "",
-    date: new Date().toISOString().split('T')[0],
-    topic: "",
-    youtubeLink: "",
-    declaration: false,
+    codepenLink: "",
+    message: "",
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const value = e.target.type === 'checkbox' 
-      ? (e.target as HTMLInputElement).checked 
-      : e.target.value;
-
     setForm((prev) => ({
       ...prev,
-      [e.target.name]: value,
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -40,7 +33,7 @@ export default function VideoSubmissionPage() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/submit-task", {
+      const res = await fetch("/api/web-design", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -63,7 +56,6 @@ export default function VideoSubmissionPage() {
       <nav className="py-6 px-6 bg-white border-b border-slate-100">
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold text-primary">
-            {/* Replace with your logo path */}
             <Image src={"/NavLogo2.png"} width={100} height={100} style={{ height: "auto", width: "auto" }} alt="Logo"/>
           </Link>
           <Link
@@ -76,7 +68,7 @@ export default function VideoSubmissionPage() {
       </nav>
 
       <div className="flex-1 container mx-auto px-4 py-12 flex items-center justify-center">
-        <div className="w-full max-w-2xl"> {/* Slightly wider for this form */}
+        <div className="w-full max-w-2xl">
           {!success ? (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -86,22 +78,23 @@ export default function VideoSubmissionPage() {
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-indigo-600" />
 
               <h1 className="text-3xl font-bold mb-2 text-slate-900">
-                Daily Task Submission
+                CodePen Submission
               </h1>
               
-              {/* Rules Section */}
+              {/* Instructions Section */}
               <div className="bg-blue-50 border border-blue-100 rounded-xl p-5 my-6">
                 <h3 className="flex items-center gap-2 font-semibold text-blue-800 mb-3">
-                  <AlertCircle size={18} /> Rules & Instructions
+                  <Code size={18} /> How to get your CodePen Link
                 </h3>
-                <ul className="space-y-2 text-sm text-blue-900/80">
-                  <li className="flex gap-2">
-                    <span className="font-bold">•</span> Record a 4-5 minute video on today&apos;s topic.
+                <ol className="space-y-2 text-sm text-blue-900/80 list-decimal list-inside pl-1">
+                  <li>
+                    Go to <a href="https://codepen.io/pen/" target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:underline">codepen.io/pen/</a> to start a new project.
                   </li>
-                  <li className="flex gap-2">
-                    <span className="font-bold">•</span> Your face and voice must be clearly visible.
-                  </li>
-                </ul>
+                  <li>Write your HTML, CSS, and JavaScript code.</li>
+                  <li>Click the <strong>Save</strong> button at the top of the editor.</li>
+                  <li>Copy the full URL from your browser&apos;s address bar.</li>
+                  <li>Paste that link into the field below.</li>
+                </ol>
               </div>
 
               <form onSubmit={submitTask} className="space-y-6">
@@ -115,42 +108,19 @@ export default function VideoSubmissionPage() {
                     onChange={handleChange}
                   />
                   <Input
-                    label="Email Address"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <Input
                     label="Phone Number"
                     name="phone"
                     type="tel"
                     value={form.phone}
                     onChange={handleChange}
                   />
-                   {/* Date Picker */}
-                   <div>
-                    <label className="block text-sm font-medium mb-1 text-slate-700">Date of Submission</label>
-                    <div className="relative">
-                      <input
-                        type="date"
-                        name="date"
-                        required
-                        value={form.date}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                      />
-                    </div>
-                  </div>
                 </div>
 
                 <hr className="border-slate-100" />
 
                 {/* Task Details Group */}
                 <div className="space-y-5">
+                  
                   {/* Day Dropdown */}
                   <div>
                     <label className="block text-sm font-medium mb-1 text-slate-700">Day Number</label>
@@ -160,7 +130,7 @@ export default function VideoSubmissionPage() {
                         required
                         value={form.day}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none bg-white"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all appearance-none bg-white"
                       >
                         <option value="" disabled>Select the day...</option>
                         {days.map((day) => (
@@ -173,57 +143,51 @@ export default function VideoSubmissionPage() {
                     </div>
                   </div>
 
-                  <Input
-                    label="Task / Topic of Video"
-                    name="topic"
-                    placeholder="e.g. A mistake that helped me grow"
-                    value={form.topic}
-                    onChange={handleChange}
-                  />
-
-                  {/* YouTube Link */}
+                  {/* CodePen Link */}
                   <div>
-                    <label className="block text-sm font-medium mb-1 text-slate-700">YouTube Video Link</label>
+                    <label className="block text-sm font-medium mb-1 text-slate-700">CodePen Project Link</label>
                     <div className="relative">
                       <input
                         type="url"
-                        name="youtubeLink"
+                        name="codepenLink"
                         onFocus={(e) => e.target.setAttribute('autocomplete', 'off')}
                         required
-                        placeholder="https://youtu.be/..."
-                        value={form.youtubeLink}
+                        placeholder="https://codepen.io/username/pen/..."
+                        value={form.codepenLink}
                         onChange={handleChange}
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 transition-all"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                       />
-                      <Youtube className="absolute left-3 top-1/2 -translate-y-1/2 text-red-500" size={20} />
+                      <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                     </div>
+                  </div>
+
+                  {/* Optional Message */}
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium mb-1 text-slate-700">Message (Optional)</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={3}
+                      placeholder="Any additional notes about your submission?"
+                      value={form.message}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"
+                    />
                   </div>
                 </div>
 
-                {/* Declaration Checkbox */}
-                <div className="flex items-start gap-3 bg-slate-50 p-4 rounded-xl border border-slate-100">
-                  <input
-                    type="checkbox"
-                    id="declaration"
-                    name="declaration"
-                    required
-                    checked={form.declaration}
-                    onChange={handleChange}
-                    className="mt-1 w-5 h-5 rounded border-slate-300 text-primary focus:ring-primary"
-                  />
-                  <label htmlFor="declaration" className="text-sm text-slate-600 leading-relaxed cursor-pointer select-none">
-                    I confirm that this video is recorded by me and follows today&apos;s task instructions.
-                  </label>
-                </div>
+                <motion.div whileTap={{ scale: 0.97 }}>
+                  <button
+                    disabled={loading}
+                    className="w-full py-4 bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer mt-2"
+                    >
+                    {loading ? <Loader2 className="animate-spin" /> : "Submit Project"}
+                  </button>
+                </motion.div>
 
-                <button
-                  disabled={loading}
-                  className="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold flex justify-center gap-2 transition-colors cursor-pointer"
-                >
-                  {loading ? <Loader2 className="animate-spin" /> : "Submit Task"}
-                </button>
               </form>
             </motion.div>
+
           ) : (
             /* SUCCESS STATE */
             <motion.div
@@ -240,15 +204,18 @@ export default function VideoSubmissionPage() {
               </h2>
 
               <p className="text-slate-600 mb-8 text-lg">
-                Great job on completing today&apos;s task. Keep up the consistency!
+                Great job! Your CodePen link has been successfully submitted.
               </p>
 
               <div className="flex flex-col gap-3">
                 <button 
-                  onClick={() => { setSuccess(false); setForm(prev => ({...prev, topic: "", youtubeLink: "", declaration: false})); }}
+                  onClick={() => { 
+                    setSuccess(false); 
+                    setForm(prev => ({...prev, day: "", codepenLink: "", message: ""})); 
+                  }}
                   className="w-full py-3 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 rounded-xl font-bold transition-colors cursor-pointer"
                 >
-                  Submit Another Task
+                  Submit Another Project
                 </button>
                 <Link
                   href="/"
@@ -277,7 +244,7 @@ function Input({ label, ...props }: InputProps) {
       <input
         id={props.name}
         required
-        className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+        className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
         {...props}
       />
     </div>
