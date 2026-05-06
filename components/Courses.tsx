@@ -75,7 +75,7 @@ export default function Courses() {
                 {/* Badge */}
                 {course.category && (
                   <div className="mb-5">
-                    <span className="bg-blue-50 text-blue-600 border border-blue-100 text-[11px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                    <span className="bg-blue-50 text-primary border border-blue-100 text-[11px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
                       {course.category}
                     </span>
                   </div>
@@ -85,7 +85,7 @@ export default function Courses() {
                 <div className="flex flex-col grow">
                   {/* Title */}
                   {course.title && (
-                    <h3 className="text-xl md:text-2xl font-bold text-primary mb-3 line-clamp-2 leading-tight group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl md:text-2xl font-bold text-primary mb-3 line-clamp-2 leading-tight group-hover:text-secondary transition-colors">
                       {course.title}
                     </h3>
                   )}
@@ -101,19 +101,19 @@ export default function Courses() {
                   <div className="flex flex-wrap items-center gap-2 mb-8">
                     {course.duration && (
                       <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full text-xs font-medium">
-                        <Clock size={14} className="text-blue-500" />
+                        <Clock size={14} className="text-primary" />
                         <span>{course.duration}</span>
                       </div>
                     )}
                     {course.lessons && (
                       <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full text-xs font-medium">
-                        <BookOpen size={14} className="text-blue-500" />
+                        <BookOpen size={14} className="text-primary" />
                         <span>{course.lessons} Modules</span>
                       </div>
                     )}
                     {course.mode && (
                       <div className="flex items-center gap-1.5 bg-slate-50 border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full text-xs font-medium">
-                        <MapPin size={14} className="text-blue-500" />
+                        <MapPin size={14} className="text-primary" />
                         <span>{course.mode}</span>
                       </div>
                     )}
@@ -125,7 +125,7 @@ export default function Courses() {
                       href={course.link}
                       target="_blank"
                       onClick={(e) => e.stopPropagation()}
-                      className="w-full inline-flex justify-center items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white px-5 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300"
+                      className="w-full inline-flex justify-center items-center gap-2 bg-primary hover:bg-secondary text-white px-5 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300"
                     >
                       Enroll Now
                       <ArrowRight

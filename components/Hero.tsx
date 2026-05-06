@@ -7,8 +7,8 @@ import Link from "next/link";
 export default function Hero() {
     // Configuration for the floating tech badges
     const floatingTech = [
-        { label: "React", icon: <Code size={18} />, color: "bg-blue-100 text-blue-600", position: "top-0 -left-4", delay: 0 },
-        { label: "Web", icon: <Globe size={18} />, color: "bg-purple-100 text-purple-600", position: "-top-10 right-10", delay: 1 },
+        { label: "React", icon: <Code size={18} />, color: "bg-blue-100 text-primary", position: "top-0 -left-4", delay: 0 },
+        { label: "Web", icon: <Globe size={18} />, color: "bg-blue-100 text-primary", position: "-top-10 right-10", delay: 1 },
         { label: "App", icon: <Smartphone size={18} />, color: "bg-green-100 text-green-600", position: "bottom-20 -left-10", delay: 2 },
         { label: "Django", icon: <Layers size={18} />, color: "bg-emerald-100 text-emerald-700", position: "-bottom-6 right-20", delay: 1.5 },
         { label: "Flutter", icon: <Layers size={18} />, color: "bg-cyan-100 text-cyan-600", position: "top-1/2 -right-12", delay: 0.5 },
@@ -22,7 +22,7 @@ export default function Hero() {
         <section className="relative pt-24 px-4 pb-20 lg:px-10 lg:pt-32 min-h-svh lg:pb-32 overflow-hidden bg-linear-to-b from-blue-50/50 to-white">
             
             {/* Background Blobs - Adjusted opacity for cleaner mobile look */}
-            <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 lg:w-125 lg:h-125 bg-purple-200/40 rounded-full blur-3xl" />
+            <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 lg:w-125 lg:h-125 bg-blue-100/40 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-96 h-96 lg:w-125 lg:h-125 bg-blue-200/40 rounded-full blur-3xl" />
 
             <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -50,7 +50,7 @@ export default function Hero() {
                             className="text-4xl sm:text-5xl lg:text-7xl font-bold text-slate-900 leading-[1.1] mb-6"
                         >
                             Learn Coding. <br />
-                            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-purple-600">
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-primary">
                                 Pay Flexibly.
                             </span>{" "}
                             <br />
@@ -76,7 +76,7 @@ export default function Hero() {
                         >
 
                             <motion.div whileTap={{ scale: 0.97 }} className="inline-block w-full sm:w-auto ">
-                                <Link href="/register" className="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-600/25 flex items-center justify-center gap-2 group"
+                                <Link href="/register" className="px-8 py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-secondary transition-all shadow-lg hover:shadow-primary/25 flex items-center justify-center gap-2 group"
                                 aria-label="Register for upcoming course batch"
                                 >
                                     Start Learning Today

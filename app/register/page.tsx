@@ -71,9 +71,9 @@ export default function RegisterPage() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-100 relative"
             >
-              <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-primary to-secondary" />
+              <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-secondary to-primary" />
 
-              <h1 className="text-3xl font-bold mb-2">Join Next Cohort</h1>
+              <h1 className="text-3xl font-bold mb-2 text-secondary">Join Next Cohort</h1>
               <p className="text-slate-600 mb-8">
                 Start your journey to becoming a professional developer.
               </p>
@@ -149,7 +149,7 @@ export default function RegisterPage() {
                 <motion.div whileTap={{ scale: 0.97 }}>
                   <button
                     disabled={loading}
-                    className="w-full py-4 bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer"
+                    className="w-full py-4 bg-primary hover:bg-secondary text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer"
                     >
                     {loading ? <Loader2 className="animate-spin" /> : "Register"}
                   </button>

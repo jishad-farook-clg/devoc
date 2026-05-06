@@ -82,7 +82,7 @@ export default function PastEvents() {
               onClick={handleScrollRight}
               animate={{ x: [0, -8, 0] }}
               transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-              className="bg-white shadow-md rounded-full p-2 text-blue-600 flex items-center justify-center border border-slate-200 backdrop-blur-sm pointer-events-auto active:scale-95"
+              className="bg-white shadow-md rounded-full p-2 text-primary flex items-center justify-center border border-slate-200 backdrop-blur-sm pointer-events-auto active:scale-95"
             >
               <ArrowRight size={20} />
             </motion.button>
@@ -143,13 +143,13 @@ export default function PastEvents() {
                       <div className="absolute top-3 left-3 right-3 flex justify-between">
                         {event.date && (
                           <span className="bg-white/95 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 ">
-                            <Calendar size={12} className="text-blue-600" />
+                            <Calendar size={12} className="text-primary" />
                             {event.date}
                           </span>
                         )}
 
                         {event.category && (
-                          <span className="bg-blue-600/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center">
+                          <span className="bg-primary/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center">
                             {event.category}
                           </span>
                         )}
@@ -175,14 +175,14 @@ export default function PastEvents() {
                       <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
                         {event.location && (
                           <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
-                            <MapPin size={14} className="text-blue-500" />
+                            <MapPin size={14} className="text-primary" />
                             {event.location}
                           </div>
                         )}
 
                         {event.attendees && (
                           <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
-                            <Users size={14} className="text-blue-500" />
+                            <Users size={14} className="text-primary" />
                             {event.attendees}
                           </div>
                         )}

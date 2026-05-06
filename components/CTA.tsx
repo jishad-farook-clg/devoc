@@ -12,7 +12,7 @@ export default function CTA() {
         <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/20 border border-white/10">
           
           {/* Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-indigo-700 to-indigo-900" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary" />
 
           {/* Soft Light Overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15),transparent_40%)]" />
@@ -70,7 +70,7 @@ export default function CTA() {
                 <motion.div whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
                   <Link
                     href="/register"
-                    className="group relative w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-blue-700 font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-all"
+                    className="group relative w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-primary font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-all"
                   >
                     <span className="relative z-10">Apply Now</span>
 

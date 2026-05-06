@@ -160,9 +160,9 @@ export default function Chatbot() {
                         exit={{ scale: 0, opacity: 0 }}
                         onClick={() => setIsOpen(true)}
                         aria-label="DeVoc Assistant Chatbot"
-                        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 p-3 sm:p-4 bg-blue-600 text-white rounded-full shadow-2xl hover:bg-blue-700 transition-colors flex items-center justify-center group"
+                        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 p-3 sm:p-4 bg-primary text-white rounded-full shadow-2xl hover:bg-secondary transition-colors flex items-center justify-center group"
                     >
-                        <div className="absolute inset-0 rounded-full animate-ping bg-blue-600 opacity-20 group-hover:opacity-40"></div>
+                        <div className="absolute inset-0 rounded-full animate-ping bg-primary opacity-20 group-hover:opacity-40"></div>
                         <MessageCircle size={28} />
                     </motion.button>
                 )}
@@ -182,7 +182,7 @@ export default function Chatbot() {
                         "
                     >
                         {/* Header */}
-                        <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-3 sm:p-4 flex items-center justify-between text-white shrink-0">
+                        <div className="bg-gradient-to-r from-primary to-secondary p-3 sm:p-4 flex items-center justify-between text-white shrink-0">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden bg-white flex items-center justify-center shrink-0">
                                     <Image src={"/logo.jpg"} className="object-cover" height={100} width={100} alt="DeVoc logo" />
@@ -206,7 +206,7 @@ export default function Chatbot() {
                                     <div 
                                         className={`max-w-[85%] p-3 rounded-2xl text-sm whitespace-pre-wrap ${
                                             msg.type === "user" 
-                                            ? "bg-blue-600 text-white rounded-br-none" 
+                                            ? "bg-primary text-white rounded-br-none" 
                                             : "bg-white border border-slate-200 text-slate-700 rounded-bl-none shadow-sm"
                                         }`}
                                     >
@@ -235,7 +235,7 @@ export default function Chatbot() {
                                     <button
                                         key={idx}
                                         onClick={() => handleSendMessage(item.question)}
-                                        className="whitespace-nowrap text-xs text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-2 rounded-full transition-colors border border-blue-100 shrink-0"
+                                        className="whitespace-nowrap text-xs text-primary bg-blue-50 hover:bg-blue-100 px-3 py-2 rounded-full transition-colors border border-blue-100 shrink-0"
                                     >
                                         {item.question}
                                     </button>
@@ -253,12 +253,12 @@ export default function Chatbot() {
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                                 placeholder="Ask about the roadmap..."
-                                className="flex-1 bg-slate-50 border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-600 min-w-0"
+                                className="flex-1 bg-slate-50 border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary min-w-0"
                             />
                             <button 
                                 type="submit"
                                 disabled={!inputValue.trim()}
-                                className="p-2 cursor-pointer bg-blue-600 text-white rounded-full disabled:opacity-50 hover:bg-blue-700 transition-colors shrink-0"
+                                className="p-2 cursor-pointer bg-primary text-white rounded-full disabled:opacity-50 hover:bg-secondary transition-colors shrink-0"
                             >
                                 <Send size={16} />
                             </button>

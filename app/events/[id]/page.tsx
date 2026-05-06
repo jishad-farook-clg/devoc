@@ -50,7 +50,8 @@ export default async function EventDetailsPage({
           <div className="mb-8">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 font-semibold transition-colors bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200/60 hover:shadow-sm"
+              className="inline-flex items-center gap-2 text-slate-500 hover:text-primm
+               font-semibold transition-colors bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200/60 hover:shadow-sm"
             >
               <ArrowLeft size={16} />
               Back to Home
@@ -61,7 +62,7 @@ export default async function EventDetailsPage({
           <div className="max-w-4xl mb-10">
             <div className="flex flex-wrap items-center gap-3 mb-4">
               {event.category && (
-                <span className="px-3 py-1 text-xs font-bold text-blue-700 bg-blue-100 border border-blue-200 rounded-full uppercase tracking-wider">
+                <span className="px-3 py-1 text-xs font-bold text-primary bg-blue-100 border border-blue-200 rounded-full uppercase tracking-wider">
                   {event.category}
                 </span>
               )}
@@ -94,7 +95,7 @@ export default async function EventDetailsPage({
                   object-contain
                   mx-auto
                   rounded-3xl
-                  md:shadow-lg md:shadow-blue-900/10
+                  md:shadow-lg md:shadow-secondary/10
                 "
                 priority
               />
@@ -133,7 +134,7 @@ export default async function EventDetailsPage({
                     <div className="space-y-6">
                       {event.date && (
                         <div className="flex items-start gap-4">
-                          <div className="p-3 bg-blue-50 text-blue-600 rounded-2xl">
+                          <div className="p-3 bg-blue-50 text-primary rounded-2xl">
                             <Calendar size={24} />
                           </div>
                           <div>

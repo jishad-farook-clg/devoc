@@ -3,8 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #0f172a; /* slate-900 */
-  --primary: #1149a9; /* blue-900 */
-  --secondary: #7c3aed; /* violet-600 */
+  --primary: #155DFC; /* blue-600 */
+  --secondary: #193CB8; /* blue-800 */
   --accent: #3b82f6; /* blue-500 */
 }
 

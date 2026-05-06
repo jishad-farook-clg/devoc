@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { gallery } from "@/data/gallery";
 
 // Utility to wrap values for infinite scrolling
 const wrap = (min: number, max: number, v: number) => {
@@ -15,19 +16,8 @@ const wrap = (min: number, max: number, v: number) => {
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
 };
 
-const items = [
-  { src: "/gallery/gallery1.jpeg", alt: "" },
-  { src: "/gallery/gallery8.jpeg", alt: "" },
-  { src: "/gallery/gallery9.jpeg", alt: "" },
-  { src: "/gallery/gallery7.jpeg", alt: "" },
-  { src: "/gallery/gallery2.jpeg", alt: "" },
-  { src: "/gallery/gallery3.jpeg", alt: "" },
-  { src: "/gallery/gallery4.jpeg", alt: "" },
-  { src: "/gallery/gallery5.jpeg", alt: "" },
-  { src: "/gallery/gallery6.jpeg", alt: "" },
-];
 
-const slides = [...items, ...items];
+const slides = [...gallery, ...gallery];
 
 export default function InfiniteMarquee() {
   // Motion value for infinite position
@@ -84,7 +74,7 @@ export default function InfiniteMarquee() {
     <section className="py-24 bg-slate-50 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 mb-16 text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
-          Moments & <span className="text-blue-600">Milestones</span>
+          Moments & <span className="text-primary">Milestones</span>
         </h2>
         <p className="text-lg text-slate-600 max-w-2xl mx-auto">
           A collection of our favorite memories, biggest wins, and the day-to-day

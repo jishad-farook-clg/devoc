@@ -1,10 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
-import Image from "next/image";
 
-export default function AboutSimple() {
+export default function AboutFirst() {
   return (
     // Changed pt-40 to pt-20 for mobile, kept lg:pt-40 for desktop
     <section id="about" className="pt-20 pb-16 lg:pt-40 lg:pb-20 bg-white relative overflow-hidden">
@@ -32,7 +30,7 @@ export default function AboutSimple() {
             {/* 2. Main Impact Statement */}
             {/* UPDATED: Aligned with source 5 for accuracy regarding specific outcomes */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight lg:leading-[1.2] mb-6 lg:mb-8">
-                DeVoc is a structured, project-driven learning community designed to turn students into <span className="text-blue-600 bg-blue-50 px-2 rounded-lg decoration-clone box-decoration-clone">confident, industry-ready developers.</span>
+                DeVoc is a structured, project-driven learning community designed to turn students into <span className="text-primary bg-blue-50 px-2 rounded-lg decoration-clone box-decoration-clone">confident, industry-ready developers.</span>
             </h2>
 
             {/* 3. Supporting Detail */}

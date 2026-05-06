@@ -4,49 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote, ArrowRight, ArrowLeft, Star } from "lucide-react";
 import Image from "next/image";
-
-const testimonials = [
-  {
-    name: "Nasih Ameen A",
-    role: "B.Voc Software Development 1st year Student",
-    content:
-      "I started with absolutely zero coding knowledge. I thought it was too complex for me. DeVoc broke it down simply. Now, I'm not just watching tutorials; I'm actually building real projects on my own.",
-    img: "/testimonial/testimonial_1.jpeg",
-    alt:"Nasih Ameen A, Student at DeVoc",
-  },
-  {
-    name: "Najad Musab VK",
-    role: "B.Voc Software Development 1st year Student",
-    content:
-    "Their dedication and effort to create a professional and career-oriented learning opportunity for us is truly inspiring. I am grateful for their guidance and vision, which will help us grow in the best way.",
-    img: "/testimonial/testimonial_2.jpeg",
-    alt:"Najad Musab VK, Student at DeVoc",
-  },
-  {
-    name: "Sharafath Ahammed V",
-    role: "B.Voc Software Development 1st year Student",
-    content:
-    "I used to think you needed to be a math genius to code. I learned here that it's just about solving problems step-by-step. It's challenging, but the feeling when your code finally works is unbeatable.",
-    img: "/testimonial/testimonial_3.jpeg",
-    alt:"Sharafath Ahammed V, Student at DeVoc",
-  },
-  {
-    name: "Marzook K K",
-    role: "B.Voc Software Development 1st year Student",
-    content:
-    "Watching videos made me feel like I understood, but I couldn't write a single line. This community pushed me to type the code myself. That hands-on practice changed everything for me.",
-    img: "/testimonial/testimonial_4.jpeg",
-    alt:"Marzook K K, Student at DeVoc",
-  },
-  {
-    name: "Mohammed Shalib K",
-    role: "B.Voc Software Development 2nd year Student",
-    content:
-    "As the Media Head of DeVoc, I'm proud to represent a brand driven by creativity, consistency, and clear vision. DeVoc's strong teamwork and impactful communication help build trust, engagement, and a growing community.",
-    img: "/testimonial/testimonial_5.jpeg",
-    alt:"Mohammed Shalib K, Media Head at DeVoc",
-  },
-];
+import { testimonials } from "@/data/testimonials";
 
 export default function TestimonialSlider() {
   const [[page, direction], setPage] = useState([0, 0]);
@@ -113,7 +71,7 @@ export default function TestimonialSlider() {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">
-            Start From <span className="text-blue-600">Zero</span>. Build
+            Start From <span className="text-primary">Zero</span>. Build
             Anything.
           </h2>
           <p className="text-lg text-slate-600 leading-relaxed">
@@ -159,7 +117,7 @@ export default function TestimonialSlider() {
                 // This absolute positioning now is relative to the "Slider Area" div above, not the whole container
                 className="absolute top-0 left-0 right-0 w-full cursor-grab active:cursor-grabbing px-2"
               >
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl shadow-blue-900/5 border border-white/50 backdrop-blur-sm relative overflow-hidden group select-none min-h-[430px]">
+                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl shadow-secondary/5 border border-white/50 backdrop-blur-sm relative overflow-hidden group select-none min-h-[430px]">
                   <Quote className="absolute top-4 right-8 text-blue-50 w-32 h-32 z-0 rotate-12 opacity-50 transition-transform duration-700 group-hover:rotate-0" />
 
                   <div className="flex flex-col md:flex-row items-center md:items-start gap-8 relative z-10">
@@ -212,7 +170,7 @@ export default function TestimonialSlider() {
           <div className="h-20 shrink-0 flex items-center justify-center gap-6 z-20 lg:pt-50 md:pt-50">
             <button
               onClick={() => paginate(-1)}
-              className="p-3 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-600 hover:shadow-lg transition-all"
+              className="p-3 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-primary hover:shadow-lg transition-all"
               aria-label="Previous testimonial"
             >
               <ArrowLeft size={20} />
@@ -228,7 +186,7 @@ export default function TestimonialSlider() {
                   }}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     idx === imageIndex
-                      ? "w-8 bg-blue-600 shadow-md shadow-blue-500/30"
+                      ? "w-8 bg-primary shadow-md shadow-primary/30"
                       : "w-2 bg-slate-300 hover:bg-slate-400"
                   }`}
                   aria-label={`Go to testimonial ${idx + 1}`}
@@ -238,7 +196,7 @@ export default function TestimonialSlider() {
 
             <button
               onClick={() => paginate(1)}
-              className="p-3 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-blue-600 hover:shadow-lg transition-all"
+              className="p-3 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-primary hover:border-primary hover:shadow-lg transition-all"
               aria-label="Next testimonial"
             >
               <ArrowRight size={20} />

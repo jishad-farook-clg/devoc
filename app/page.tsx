@@ -1,13 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import About from "@/components/AboutWhy";
+import AboutFirst from "@/components/AboutFirst";
 import Features from "@/components/Features";
 import Courses from "@/components/Courses";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
-import AboutSecond from "@/components/About";
+import AboutSecond from "@/components/AboutSecond";
 import ImageSlider from "@/components/ImageSlider";
 import Events from "@/components/Events";
 import FAQ from "@/components/FAQ";
@@ -20,7 +20,7 @@ export default function Home() {
       <Chatbot />
       <Hero />
       <Features />
-      <About />
+      <AboutFirst />
       <AboutSecond/>
       <Courses />
       <Events/>

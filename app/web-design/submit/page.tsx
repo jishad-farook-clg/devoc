@@ -75,7 +75,7 @@ export default function WebDesignSubmission() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-100 relative"
             >
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-indigo-600" />
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-secondary to-primary" />
 
               <h1 className="text-3xl font-bold mb-2 text-slate-900">
                 CodePen Submission
@@ -83,12 +83,12 @@ export default function WebDesignSubmission() {
               
               {/* Instructions Section */}
               <div className="bg-blue-50 border border-blue-100 rounded-xl p-5 my-6">
-                <h3 className="flex items-center gap-2 font-semibold text-blue-800 mb-3">
+                <h3 className="flex items-center gap-2 font-semibold text-secondary mb-3">
                   <Code size={18} /> How to get your CodePen Link
                 </h3>
-                <ol className="space-y-2 text-sm text-blue-900/80 list-decimal list-inside pl-1">
+                <ol className="space-y-2 text-sm text-secondary/80 list-decimal list-inside pl-1">
                   <li>
-                    Go to <a href="https://codepen.io/pen/" target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:underline">codepen.io/pen/</a> to start a new project.
+                    Go to <a href="https://codepen.io/pen/" target="_blank" rel="noopener noreferrer" className="font-bold text-primary hover:underline">codepen.io/pen/</a> to start a new project.
                   </li>
                   <li>Write your HTML, CSS, and JavaScript code.</li>
                   <li>Click the <strong>Save</strong> button at the top of the editor.</li>
@@ -130,7 +130,7 @@ export default function WebDesignSubmission() {
                         required
                         value={form.day}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all appearance-none bg-white"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none bg-white"
                       >
                         <option value="" disabled>Select the day...</option>
                         {days.map((day) => (
@@ -155,7 +155,7 @@ export default function WebDesignSubmission() {
                         placeholder="https://codepen.io/username/pen/..."
                         value={form.codepenLink}
                         onChange={handleChange}
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                       />
                       <LinkIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                     </div>
@@ -171,7 +171,7 @@ export default function WebDesignSubmission() {
                       placeholder="Any additional notes about your submission?"
                       value={form.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
                     />
                   </div>
                 </div>
@@ -179,7 +179,7 @@ export default function WebDesignSubmission() {
                 <motion.div whileTap={{ scale: 0.97 }}>
                   <button
                     disabled={loading}
-                    className="w-full py-4 bg-blue-600 hover:bg-blue-800 text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer mt-2"
+                    className="w-full py-4 bg-primary hover:bg-secondary text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer mt-2"
                     >
                     {loading ? <Loader2 className="animate-spin" /> : "Submit Project"}
                   </button>
@@ -244,7 +244,7 @@ function Input({ label, ...props }: InputProps) {
       <input
         id={props.name}
         required
-        className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+        className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
         {...props}
       />
     </div>

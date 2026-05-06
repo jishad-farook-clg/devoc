@@ -22,11 +22,11 @@ export default function FAQ() {
         
         {/* Header Section */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-blue-50 rounded-2xl text-blue-600 mb-6">
+          <div className="inline-flex items-center justify-center p-3 bg-blue-50 rounded-2xl text-primary mb-6">
             <MessageCircleQuestion className="w-8 h-8" />
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">
-            Frequently Asked <span className="text-blue-600">Questions</span>
+            Frequently Asked <span className="text-primary">Questions</span>
           </h2>
           <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
             Everything you need to know about joining DeVoc, our curriculum, and how we help you launch your tech career.
@@ -43,7 +43,7 @@ export default function FAQ() {
                 key={index}
                 className={`border rounded-2xl transition-all duration-300 overflow-hidden ${
                   isOpen 
-                    ? "border-blue-200 bg-blue-50/30 shadow-lg shadow-blue-900/5" 
+                    ? "border-blue-200 bg-blue-50/30 shadow-lg shadow-secondary/5" 
                     : "border-slate-200 bg-white hover:border-blue-300"
                 }`}
               >
@@ -52,10 +52,10 @@ export default function FAQ() {
                     onClick={() => toggleFAQ(index)}
                     aria-expanded={isOpen}
                     aria-controls={`faq-answer-${index}`}
-                    className="w-full text-left px-6 py-6 md:px-8 flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-2xl"
+                    className="w-full text-left px-6 py-6 md:px-8 flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl"
                   >
                     <span className={`text-lg font-bold transition-colors duration-300 pr-8 ${
-                      isOpen ? "text-blue-700" : "text-slate-800"
+                      isOpen ? "text-primary" : "text-slate-800"
                     }`}>
                       {faq.question}
                     </span>
@@ -65,7 +65,7 @@ export default function FAQ() {
                       initial={false}
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                        isOpen ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-500"
+                        isOpen ? "bg-primary text-white" : "bg-slate-100 text-slate-500"
                       }`}
                     >
                       {isOpen ? <Minus size={18} /> : <Plus size={18} />}

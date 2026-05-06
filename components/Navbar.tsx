@@ -75,7 +75,7 @@ export default function Navbar() {
                 <motion.div whileTap={{ scale: 0.97 }} className="inline-block">
                     <Link 
                     href="/register" 
-                    className="bg-blue-600 text-white px-6 py-2.5 rounded-full font-medium hover:bg-blue-800 transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+                    className="bg-primary text-white px-6 py-2.5 rounded-full font-medium hover:bg-secondary transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
                     >
                         Join Now <ChevronRight size={18} />
                     </Link>
@@ -133,7 +133,7 @@ export default function Navbar() {
                                 Contact
                             </Link>
                             <motion.div whileTap={{ scale: 0.97 }}>
-                                <Link href="/register" className="bg-blue-600 hover:bg-blue-800 text-white w-full py-3 rounded-xl font-medium mt-4 text-center block">
+                                <Link href="/register" className="bg-primary hover:bg-secondary text-white w-full py-3 rounded-xl font-medium mt-4 text-center block">
                                     Join Now
                                 </Link>
                             </motion.div>

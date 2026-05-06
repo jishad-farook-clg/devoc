@@ -83,7 +83,7 @@ export default function VideoSubmissionPage() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-100 relative"
             >
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 to-indigo-600" />
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-secondary to-primary" />
 
               <h1 className="text-3xl font-bold mb-2 text-slate-900">
                 Daily Task Submission
@@ -91,10 +91,10 @@ export default function VideoSubmissionPage() {
               
               {/* Rules Section */}
               <div className="bg-blue-50 border border-blue-100 rounded-xl p-5 my-6">
-                <h3 className="flex items-center gap-2 font-semibold text-blue-800 mb-3">
+                <h3 className="flex items-center gap-2 font-semibold text-secondary mb-3">
                   <AlertCircle size={18} /> Rules & Instructions
                 </h3>
-                <ul className="space-y-2 text-sm text-blue-900/80">
+                <ul className="space-y-2 text-sm text-secondary/80">
                   <li className="flex gap-2">
                     <span className="font-bold">•</span> Record a 4-5 minute video on today&apos;s topic.
                   </li>
