@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import LoadingProvider from "@/components/LoadingProvider";
+import Clarity from "@/components/Clarity";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,6 +56,8 @@ export default function RootLayout({
     <html lang="en" data-scroll-behavior="smooth">
       <body className={`${inter.className} antialiased selection:bg-purple-200 selection:text-purple-900`}>
         <LoadingProvider>
+          {/* Microsoft Clarity */}
+          <Clarity/>
           {children}
         </LoadingProvider>
       </body>
