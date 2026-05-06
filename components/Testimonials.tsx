@@ -52,7 +52,7 @@ export default function TestimonialSlider() {
 
   return (
     <section className="py-20 bg-slate-50 overflow-hidden relative">
-      <div className="hidden">
+      {/* <div className="hidden">
         {testimonials.map((t, idx) => (
           <Image
             key={idx}
@@ -60,10 +60,9 @@ export default function TestimonialSlider() {
             alt={t.alt}
             width={10}
             height={10}
-            priority
           />
         ))}
-      </div>
+      </div> */}
 
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/60 rounded-full blur-3xl opacity-60 -z-10 translate-x-1/3 -translate-y-1/4" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-indigo-50/60 rounded-full blur-3xl opacity-60 -z-10 -translate-x-1/3 translate-y-1/4" />
@@ -93,7 +92,7 @@ export default function TestimonialSlider() {
               mode="popLayout"
             >
               <motion.div
-                key={page}
+                key={imageIndex}
                 custom={direction}
                 variants={variants}
                 initial="enter"
@@ -129,9 +128,9 @@ export default function TestimonialSlider() {
                           fill
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, 33vw"
-                          priority
                           draggable={false}
-                        />
+                          placeholder="blur"
+                          />
                       </div>
                     </div>
 
@@ -167,7 +166,7 @@ export default function TestimonialSlider() {
             </AnimatePresence>
           </div>
 
-          <div className="h-20 shrink-0 flex items-center justify-center gap-6 z-20 lg:pt-50 md:pt-50">
+          <div className="h-20 shrink-0 flex items-center justify-center gap-6 z-20 lg:pt-[100px] md:pt-[100px]">
             <button
               onClick={() => paginate(-1)}
               className="p-3 rounded-full bg-white border border-slate-200 text-slate-500 hover:text-blue-600 hover:border-primary hover:shadow-lg transition-all"

@@ -1,4 +1,4 @@
-export const jsonLd = {
+export const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
@@ -73,6 +73,43 @@ export const jsonLd = {
           "@type": "Answer",
           "text": "The Capstone Project is a unique final stage with no explicit timeline limit. In this flagship phase, you are challenged to build, host, and publish a complete, end-to-end live application. You only graduate and get certified when you can independently deliver a fully functional, industry-grade software product."
         }
-      }
+      },
     ]
   };
+
+export const orgJsonld = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "DeVoc",
+  "description": "A career-focused learning community and skill-development startup bridging the gap between academic theory and industry demands. DeVoc abandons traditional tutorial-loop learning in favor of an immersive engineering environment, utilizing rigorous code reviews, continuous mentorship, and comprehensive soft-skills training to transform beginners into confident, deployment-ready developers.",
+  "url": "https://devoc.bvocfarookcollege.com/", 
+  "email": "devocofficial@gmail.com",
+  "sameAs": [
+    "https://www.linkedin.com/company/devocfc",
+    "https://www.instagram.com/devoc.official"
+  ],
+  "founder": [
+    {
+      "@type": "Person",
+      "name": "Jishad P",
+      "jobTitle": "Founder",
+      "sameAs": "https://in.linkedin.com/in/jishad-pukkunnummal"
+    },
+    {
+      "@type": "Person",
+      "name": "Shazia VP",
+      "jobTitle": "Co-Founder",
+      "sameAs": "https://in.linkedin.com/in/shaziavp"
+    },
+    {
+      "@type": "Person",
+      "name": "Adil KM",
+      "jobTitle": "Co-Founder",
+      "sameAs": "https://in.linkedin.com/in/adil-km"
+    }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "description": "An immersive, project-based developer ecosystem featuring technical training, presentation coaching, and career preparation."
+  }
+};

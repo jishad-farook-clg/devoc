@@ -64,6 +64,13 @@ export default function Navbar() {
                         Events
                     </Link>
                     <Link
+                        href={"/#faqs"}
+                        scroll={true}
+                        className="text-slate-600 hover:text-primary transition-colors font-medium"
+                        >
+                        FAQs
+                    </Link>
+                    <Link
                         href={"/contact"}
                         scroll={true}
                         className="text-slate-600 hover:text-primary transition-colors font-medium"
@@ -123,6 +130,14 @@ export default function Navbar() {
                                 onClick={() => setIsOpen(false)}
                             >
                                 Events
+                            </Link>
+                            <Link
+                                href={"/#faqs"}
+                                scroll={true}
+                                className="mx-2 text-lg text-slate-700 font-medium py-2 border-b border-slate-50"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                FAQs
                             </Link>
                             <Link
                                 href={"/contact"}

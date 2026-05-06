@@ -11,11 +11,20 @@ import AboutSecond from "@/components/AboutSecond";
 import ImageSlider from "@/components/ImageSlider";
 import Events from "@/components/Events";
 import FAQ from "@/components/FAQ";
-import { jsonLd } from "@/data/jsonld";
+import { faqJsonLd, orgJsonld } from "@/data/jsonld";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50">
+      {/* --- SEO / JSON-LD Scripts --- */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonld) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Navbar />
       <Chatbot />
       <Hero />
@@ -27,10 +36,6 @@ export default function Home() {
       <ImageSlider/>
       <Testimonials />
       <CTA />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <FAQ/>
       <Footer />
     </main>

@@ -85,10 +85,10 @@ export default function Hero() {
                             </motion.div>
                             
                             <motion.div whileTap={{ scale: 0.97 }} className="inline-block w-full sm:w-auto">
-                                <Link href={"/files/brochure.pdf"} download={"brochure.pdf"} className="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
+                                <a href={"/files/brochure.pdf"} download={"brochure.pdf"} className="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
                                     Download Brochure
                                     <Download className="group-hover:translate-x-1 transition-transform" />
-                                </Link>
+                                </a>
                             </motion.div>
                         </motion.div>
                     </div>

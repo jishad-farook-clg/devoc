@@ -1,3 +1,6 @@
+import uidai_hackathon from "@/public/events/UIDAI-Data-Hackathon-2026.jpg"
+import from_brain_to_binary from "@/public/events/from_brain_to_binary_poster.jpeg"
+
 export const events = [
   {
     id: 1,
@@ -6,7 +9,7 @@ export const events = [
     date: "Jan 5–20, 2026",
     location: "Online",
     attendees: "24+ people",
-    image: "/events/UIDAI-Data-Hackathon-2026.jpg",
+    image: uidai_hackathon,
     alt:"Poster of online mentorship program for UIDAI Data Hackathon 2026, conducted by DeVoc.",
     imagePosition: "center",
     description: [
@@ -24,7 +27,7 @@ export const events = [
     date: "Feb 4, 2026",
     location: "Incubation Centre",
     attendees: "54+ people",
-    image: "/events/from_brain_to_binary_poster.jpeg",
+    image: from_brain_to_binary,
     alt:"Poster of official inauguration of DeVoc Batch 1",
     imagePosition: "poster",
     description: [

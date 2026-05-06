@@ -54,7 +54,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className={`${inter.className} antialiased selection:bg-purple-200 selection:text-purple-900`}>
+      <body className={`${inter.className} antialiased selection:bg-primary-light selection:text-secondary`}>
         <LoadingProvider>
           {/* Microsoft Clarity */}
           <Clarity/>

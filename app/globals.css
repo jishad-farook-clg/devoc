@@ -4,9 +4,12 @@
   --background: #ffffff;
   --foreground: #0f172a; /* slate-900 */
   --primary: #155DFC; /* blue-600 */
+  --primary-light: #bedbff; /* blue-200 */
   --secondary: #193CB8; /* blue-800 */
   --accent: #3b82f6; /* blue-500 */
+  
 }
+
 
 body {
   background: var(--background);

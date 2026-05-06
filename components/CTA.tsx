@@ -82,14 +82,14 @@ export default function CTA() {
 
                 {/* Secondary */}
                 <motion.div whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
-                  <Link
+                  <a
                     href="/files/brochure.pdf"
                     download
                     className="group w-full sm:w-auto px-8 py-4 rounded-xl border border-white/80 text-white font-semibold text-lg flex items-center justify-center gap-2 hover:bg-white/10 transition-all"
                   >
                     Download Brochure
                     <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-                  </Link>
+                  </a>
                 </motion.div>
 
               </div>

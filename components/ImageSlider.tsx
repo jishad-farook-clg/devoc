@@ -107,7 +107,8 @@ export default function InfiniteMarquee() {
                   fill
                   sizes="(max-width: 768px) 280px, 450px"
                   className="object-cover hover:scale-105 transition-transform duration-500"
-                  priority={idx < 4}
+                  // priority={idx < 4}
+                  placeholder="blur"
                   draggable={false}
                 />
               </div>

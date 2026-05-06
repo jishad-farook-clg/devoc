@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
+import icon from "@/app/favicon.ico"
 const SplashScreen = () => {
   return (
     <motion.div
@@ -24,7 +24,7 @@ const SplashScreen = () => {
         className="relative"
       >
         {/* Replace with your Logo Image */}
-        <Image src={"/favicon.ico"} loading="eager" width={100} height={100} alt=""/>
+        <Image src={icon} loading="eager" width={100} height={100} alt=""/>
       </motion.div>
     </motion.div>
   );

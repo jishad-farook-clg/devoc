@@ -59,6 +59,11 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
+                                <Link href={"/#faqs"} className="hover:text-white transition-colors">
+                                    FAQs
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href={"/contact"} className="hover:text-white transition-colors">
                                     Contact Us
                                 </Link>
@@ -85,19 +90,23 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href={"/files/brochure.pdf"} download={"brochure.pdf"} className="hover:text-white transition-colors">
+                                <a href={"/files/brochure.pdf"} download={"brochure.pdf"} className="hover:text-white transition-colors">
                                     Brochure
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                     </div>
 
                     <div>
                         <h4 className="text-white font-bold mb-6">Contact</h4>
-                        <ul className="space-y-4 text-slate-400">
-                            <li><Link href={"mailto:devocofficial@gmail.com"}>devocofficial@gmail.com</Link></li>
-                            <li><Link href={"tel:9947587819"}>+91 9947587819</Link></li>
-                            <li>Farook College (Autonomous),<br/>Kozhikode, Kerala, India 673632</li>
+                        <ul className="space-y-4">
+                            <li>
+                                <Link href={"mailto:devocofficial@gmail.com"} className="hover:text-white transition-colors">devocofficial@gmail.com</Link>
+                            </li>
+                            <li>
+                                <Link href={"tel:9947587819"} className="hover:text-white transition-colors">+91 9947587819</Link>
+                            </li>
+                            <li className="hover:text-white transition-colors">Farook College (Autonomous),<br/>Kozhikode, Kerala, India 673632</li>
                         </ul>
                     </div>
                 </div>

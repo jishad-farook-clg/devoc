@@ -40,6 +40,7 @@ export default async function EventDetailsPage({
               alt="ambient background"
               fill
               className="object-cover blur-[120px]"
+              placeholder="blur"
             />
           </div>
         </div>
@@ -88,6 +89,8 @@ export default async function EventDetailsPage({
                 width={1600}
                 height={900}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+                placeholder="blur"
+
                 className="
                   w-full
                   h-auto
@@ -97,7 +100,6 @@ export default async function EventDetailsPage({
                   rounded-3xl
                   md:shadow-lg md:shadow-secondary/10
                 "
-                priority
               />
             </div>
           </div>

@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
+import logo from "@/public/logo.jpg"
 type Message = {
     id: number;
     type: "user" | "bot";
@@ -185,7 +185,7 @@ export default function Chatbot() {
                         <div className="bg-gradient-to-r from-primary to-secondary p-3 sm:p-4 flex items-center justify-between text-white shrink-0">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden bg-white flex items-center justify-center shrink-0">
-                                    <Image src={"/logo.jpg"} className="object-cover" height={100} width={100} alt="DeVoc logo" />
+                                    <Image src={logo} className="object-cover" placeholder="blur" height={100} width={100} alt="DeVoc logo" />
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-sm">DeVoc Assistant</h3>

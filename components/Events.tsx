@@ -129,7 +129,8 @@ export default function PastEvents() {
                           src={event.image}
                           alt={event.alt}
                           fill
-                          priority={event.id === 1}
+                          // priority={event.id === 1}
+                          placeholder="blur"
                           sizes="(max-width: 768px) 100vw, 33vw"
                           className="object-cover"
                           style={{ objectPosition }}
