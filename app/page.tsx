@@ -11,11 +11,13 @@ import AboutSecond from "@/components/About";
 import ImageSlider from "@/components/ImageSlider";
 import Events from "@/components/Events";
 import FAQ from "@/components/FAQ";
+import { jsonLd } from "@/data/jsonld";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50">
       <Navbar />
+      <Chatbot />
       <Hero />
       <Features />
       <About />
@@ -25,9 +27,12 @@ export default function Home() {
       <ImageSlider/>
       <Testimonials />
       <CTA />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <FAQ/>
       <Footer />
-      <Chatbot />
     </main>
   );
 }
