@@ -76,7 +76,9 @@ export default function Hero() {
                         >
 
                             <motion.div whileTap={{ scale: 0.97 }} className="inline-block w-full sm:w-auto ">
-                                <Link href="/register" className="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-600/25 flex items-center justify-center gap-2 group">
+                                <Link href="/register" className="px-8 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-800 transition-all shadow-lg hover:shadow-blue-600/25 flex items-center justify-center gap-2 group"
+                                aria-label="Register for upcoming course batch"
+                                >
                                     Start Learning Today
                                     <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                                 </Link>

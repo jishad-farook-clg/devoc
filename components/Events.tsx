@@ -127,7 +127,7 @@ export default function PastEvents() {
                       {event.image && (
                         <Image
                           src={event.image}
-                          alt={event.title}
+                          alt={event.alt}
                           fill
                           priority={event.id === 1}
                           sizes="(max-width: 768px) 100vw, 33vw"

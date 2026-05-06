@@ -10,6 +10,7 @@ import Chatbot from "@/components/Chatbot";
 import AboutSecond from "@/components/About";
 import ImageSlider from "@/components/ImageSlider";
 import Events from "@/components/Events";
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <ImageSlider/>
       <Testimonials />
       <CTA />
+      <FAQ/>
       <Footer />
       <Chatbot />
     </main>

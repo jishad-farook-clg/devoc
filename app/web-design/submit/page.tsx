@@ -56,7 +56,7 @@ export default function WebDesignSubmission() {
       <nav className="py-6 px-6 bg-white border-b border-slate-100">
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold text-primary">
-            <Image src={"/NavLogo2.png"} width={100} height={100} style={{ height: "auto", width: "auto" }} alt="Logo"/>
+            <Image src={"/NavLogo2.png"} width={100} height={100} style={{ height: "auto", width: "auto" }} alt="DeVoc logo"/>
           </Link>
           <Link
             href="/"

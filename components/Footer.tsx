@@ -9,7 +9,7 @@ export default function Footer() {
                 <div className="grid md:grid-cols-4 gap-12 mb-12">
                     <div className="col-span-1 md:col-span-1">
                         <Link href="/" className="text-2xl font-bold text-white mb-4 block">
-                            <Image src={"/logo.png"} width={60} height={60} alt=""/>
+                            <Image src={"/logo.png"} width={60} height={60} alt="DeVoc logo"/>
                         </Link>
                         <p className="text-slate-400 leading-relaxed mb-6">
                             Empowering the next generation of developers through accessible,

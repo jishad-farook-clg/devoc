@@ -83,7 +83,7 @@ export default async function EventDetailsPage({
             <div className="relative w-full max-w-6xl mx-auto overflow-hidden">
               <Image
                 src={event.image}
-                alt={event.title}
+                alt={event.alt}
                 width={1600}
                 height={900}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"

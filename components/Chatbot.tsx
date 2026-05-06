@@ -159,6 +159,7 @@ export default function Chatbot() {
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0, opacity: 0 }}
                         onClick={() => setIsOpen(true)}
+                        aria-label="DeVoc Assistant Chatbot"
                         className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 p-3 sm:p-4 bg-blue-600 text-white rounded-full shadow-2xl hover:bg-blue-700 transition-colors flex items-center justify-center group"
                     >
                         <div className="absolute inset-0 rounded-full animate-ping bg-blue-600 opacity-20 group-hover:opacity-40"></div>
@@ -184,7 +185,7 @@ export default function Chatbot() {
                         <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-3 sm:p-4 flex items-center justify-between text-white shrink-0">
                             <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden bg-white flex items-center justify-center shrink-0">
-                                    <Image src={"/logo.jpg"} className="object-cover" height={100} width={100} alt="" />
+                                    <Image src={"/logo.jpg"} className="object-cover" height={100} width={100} alt="DeVoc logo" />
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-sm">DeVoc Assistant</h3>
@@ -193,7 +194,7 @@ export default function Chatbot() {
                                     </p>
                                 </div>
                             </div>
-                            <button onClick={() => setIsOpen(false)} className="p-1 cursor-pointer hover:bg-white/20 rounded-full shrink-0">
+                            <button onClick={() => setIsOpen(false)} aria-label="Close button" className="p-1 cursor-pointer hover:bg-white/20 rounded-full shrink-0">
                                 <X size={24} />
                             </button>
                         </div>

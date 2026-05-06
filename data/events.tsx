@@ -7,6 +7,7 @@ export const events = [
     location: "Online",
     attendees: "24+ people",
     image: "/events/UIDAI-Data-Hackathon-2026.jpg",
+    alt:"Poster of online mentorship program for UIDAI Data Hackathon 2026, conducted by DeVoc.",
     imagePosition: "center",
     description: [
       "UIDAI Data Hackathon 2026 was a national-level data challenge organized by the Unique Identification Authority of India (UIDAI). The event aimed to encourage innovative, data-driven solutions for public governance challenges.",
@@ -24,6 +25,7 @@ export const events = [
     location: "Incubation Centre",
     attendees: "54+ people",
     image: "/events/from_brain_to_binary_poster.jpeg",
+    alt:"Poster of official inauguration of DeVoc Batch 1",
     imagePosition: "poster",
     description: [
       "From Brain to Binary marked the official inauguration of DeVoc Batch 1, symbolizing the beginning of a journey where ideas start to transform into meaningful digital solutions. The session set an inspiring tone for learners by emphasizing that technology is not just about tools or code, but about the way we think, question, and create.",

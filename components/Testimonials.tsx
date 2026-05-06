@@ -12,34 +12,39 @@ const testimonials = [
     content:
       "I started with absolutely zero coding knowledge. I thought it was too complex for me. DeVoc broke it down simply. Now, I'm not just watching tutorials; I'm actually building real projects on my own.",
     img: "/testimonial/testimonial_1.jpeg",
+    alt:"Nasih Ameen A, Student at DeVoc",
   },
   {
     name: "Najad Musab VK",
     role: "B.Voc Software Development 1st year Student",
     content:
-      "Their dedication and effort to create a professional and career-oriented learning opportunity for us is truly inspiring. I am grateful for their guidance and vision, which will help us grow in the best way.",
+    "Their dedication and effort to create a professional and career-oriented learning opportunity for us is truly inspiring. I am grateful for their guidance and vision, which will help us grow in the best way.",
     img: "/testimonial/testimonial_2.jpeg",
+    alt:"Najad Musab VK, Student at DeVoc",
   },
   {
     name: "Sharafath Ahammed V",
     role: "B.Voc Software Development 1st year Student",
     content:
-      "I used to think you needed to be a math genius to code. I learned here that it's just about solving problems step-by-step. It's challenging, but the feeling when your code finally works is unbeatable.",
+    "I used to think you needed to be a math genius to code. I learned here that it's just about solving problems step-by-step. It's challenging, but the feeling when your code finally works is unbeatable.",
     img: "/testimonial/testimonial_3.jpeg",
+    alt:"Sharafath Ahammed V, Student at DeVoc",
   },
   {
     name: "Marzook K K",
     role: "B.Voc Software Development 1st year Student",
     content:
-      "Watching videos made me feel like I understood, but I couldn't write a single line. This community pushed me to type the code myself. That hands-on practice changed everything for me.",
+    "Watching videos made me feel like I understood, but I couldn't write a single line. This community pushed me to type the code myself. That hands-on practice changed everything for me.",
     img: "/testimonial/testimonial_4.jpeg",
+    alt:"Marzook K K, Student at DeVoc",
   },
   {
     name: "Mohammed Shalib K",
     role: "B.Voc Software Development 2nd year Student",
     content:
-      "As the Media Head of DeVoc, I'm proud to represent a brand driven by creativity, consistency, and clear vision. DeVoc's strong teamwork and impactful communication help build trust, engagement, and a growing community.",
+    "As the Media Head of DeVoc, I'm proud to represent a brand driven by creativity, consistency, and clear vision. DeVoc's strong teamwork and impactful communication help build trust, engagement, and a growing community.",
     img: "/testimonial/testimonial_5.jpeg",
+    alt:"Mohammed Shalib K, Media Head at DeVoc",
   },
 ];
 
@@ -94,7 +99,7 @@ export default function TestimonialSlider() {
           <Image
             key={idx}
             src={t.img}
-            alt="preload"
+            alt={t.alt}
             width={10}
             height={10}
             priority
@@ -162,7 +167,7 @@ export default function TestimonialSlider() {
                       <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl relative overflow-hidden shadow-lg ring-4 ring-blue-50/50">
                         <Image
                           src={currentTestimonial.img}
-                          alt={currentTestimonial.name}
+                          alt={currentTestimonial.alt}
                           fill
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, 33vw"
