@@ -1,8 +1,8 @@
-import nasih from "@/public/testimonial/nasih-ameen-devoc-student-testimonial.jpeg"
-import shalib from "@/public/testimonial/mohammed-shalib-devoc-media-head-testimonial.jpeg"
-import najad from "@/public/testimonial/najad-musab-devoc-student-testimonial.jpeg"
-import marzook from "@/public/testimonial/marzook-devoc-student-testimonial.jpeg"
-import sharafath from "@/public/testimonial/sharafath-ahammed-devoc-student-testimonial.jpeg"
+import nasih from "@/public/testimonial/nasih-ameen-devoc-student-testimonial.webp"
+import shalib from "@/public/testimonial/mohammed-shalib-devoc-media-head-testimonial.webp"
+import najad from "@/public/testimonial/najad-musab-devoc-student-testimonial.webp"
+import marzook from "@/public/testimonial/marzook-devoc-student-testimonial.webp"
+import sharafath from "@/public/testimonial/sharafath-ahammed-devoc-student-testimonial.webp"
 
 export const testimonials = [
   {

@@ -2,17 +2,18 @@
 
 import { InputHTMLAttributes, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { CheckCircle2, Loader2, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
+import FadeIn from "@/components/FadeIn";
 
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+
   const [form, setForm] = useState({
     name: "",
-    phone: "", 
+    phone: "",
     message: "",
   });
 
@@ -32,11 +33,16 @@ export default function ContactPage() {
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(form),
       });
 
-      if (!res.ok) throw new Error("Failed");
+      if (!res.ok) {
+        throw new Error("Failed");
+      }
+
       setSuccess(true);
     } catch {
       alert("Failed to send message. Please try again.");
@@ -51,13 +57,21 @@ export default function ContactPage() {
       <nav className="py-6 px-6 bg-white border-b border-slate-100">
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold text-primary">
-            <Image src={"/NavLogo2.png"} width={100} height={100} style={{ height: "auto", width: "auto" }} alt=""/>
+            <Image
+              src="/NavLogo2.png"
+              width={100}
+              height={100}
+              style={{ height: "auto", width: "auto" }}
+              alt=""
+            />
           </Link>
+
           <Link
             href="/"
             className="text-sm font-medium text-slate-500 hover:text-primary flex items-center gap-1"
           >
-            <ArrowLeft size={16} /> Back to Home
+            <ArrowLeft size={16} />
+            Back to Home
           </Link>
         </div>
       </nav>
@@ -65,91 +79,101 @@ export default function ContactPage() {
       <div className="flex-1 container mx-auto px-6 py-12 flex items-center justify-center">
         <div className="w-full max-w-lg">
           {!success ? (
-            <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-100 relative"
-            >
-              <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-secondary to-primary" />
+            <FadeIn>
+              <div className="bg-white p-8 sm:p-10 rounded-3xl shadow-xl border border-slate-100 relative">
+                <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-secondary to-primary" />
 
-              <h1 className="text-3xl font-bold mb-2 text-secondary">Contact Us</h1>
-              <p className="text-slate-600 mb-8">
-                Have a question? Drop us a message.
-              </p>
+                <h1 className="text-3xl font-bold mb-2 text-secondary">
+                  Contact Us
+                </h1>
 
-              <form onSubmit={submitContact} className="space-y-5">
-                <Input
-                  label="Your Name"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  />
+                <p className="text-slate-600 mb-8">
+                  Have a question? Drop us a message.
+                </p>
 
-                <Input
-                  label="Phone Number"
-                  name="phone"
-                  value={form.phone}
-                  onChange={handleChange}
-                  />
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    required
-                    id="message"
-                    value={form.message}
+                <form onSubmit={submitContact} className="space-y-5">
+                  <Input
+                    label="Your Name"
+                    name="name"
+                    value={form.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border outline-none resize-none"
+                  />
+
+                  <Input
+                    label="Phone Number"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                  />
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium mb-1"
+                    >
+                      Message
+                    </label>
+
+                    <textarea
+                      name="message"
+                      rows={4}
+                      required
+                      id="message"
+                      value={form.message}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl border outline-none resize-none"
                     />
+                  </div>
+
+                  <div className="active:scale-[0.97] transition-transform">
+                    <button
+                      disabled={loading}
+                      className="w-full py-4 bg-primary hover:bg-secondary text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer transition-all"
+                    >
+                      {loading ? (
+                        <Loader2 className="animate-spin" />
+                      ) : (
+                        "Send Message"
+                      )}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </FadeIn>
+          ) : (
+            <FadeIn>
+              <div className="bg-white p-10 rounded-3xl shadow-xl text-center">
+                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle2
+                    size={40}
+                    className="text-green-600"
+                  />
                 </div>
 
-                <motion.div whileTap={{ scale: 0.97 }}>
-                  <button
-                    disabled={loading}
-                    className="w-full py-4 bg-primary hover:bg-secondary text-white rounded-xl font-bold flex justify-center gap-2 cursor-pointer"
-                    >
-                    {loading ? <Loader2 className="animate-spin" /> : "Send Message"}
-                  </button>
-                </motion.div>
+                <h2 className="text-2xl font-bold mb-3">
+                  Message Sent Successfully!
+                </h2>
 
-              </form>
-            </motion.div>
-          ) : (
-            <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-white p-10 rounded-3xl shadow-xl text-center"
-            >
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle2 size={40} className="text-green-600" />
+                <p className="text-slate-600 mb-8">
+                  Thank you for reaching out. Our team will get back to you
+                  shortly.
+                </p>
+
+                <div className="active:scale-[0.97] transition-transform">
+                  <Link
+                    href="/"
+                    className="inline-block w-full py-3 bg-slate-900 text-white rounded-xl font-bold"
+                  >
+                    Go Home
+                  </Link>
+                </div>
               </div>
-
-              <h2 className="text-2xl font-bold mb-3">
-                Message Sent Successfully!
-              </h2>
-
-              <p className="text-slate-600 mb-8">
-                Thank you for reaching out. Our team will get back to you shortly.
-              </p>
-
-              <motion.div whileTap={{ scale: 0.97 }}>
-                <Link
-                  href="/"
-                  className="inline-block w-full py-3 bg-slate-900 text-white rounded-xl font-bold"
-                >
-                  Go Home
-                </Link>
-              </motion.div>
-
-            </motion.div>
+            </FadeIn>
           )}
         </div>
       </div>
-      <Footer/>
+
+      <Footer />
     </div>
   );
 }
@@ -161,7 +185,13 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 function Input({ label, ...props }: InputProps) {
   return (
     <div>
-      <label htmlFor={label} className="block text-sm font-medium mb-1">{label}</label>
+      <label
+        htmlFor={label}
+        className="block text-sm font-medium mb-1"
+      >
+        {label}
+      </label>
+
       <input
         id={label}
         required

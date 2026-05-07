@@ -144,14 +144,16 @@ export default async function CourseDetailsPage({
                   </div>
 
                   {/* Enroll Button */}
-                  <div className="mt-8 pt-6 border-t border-slate-100">
-                    <Link
-                      href={course.link || "#"}
-                      className="w-full flex justify-center items-center gap-2 bg-[lab(44.0605%_29.0279_-86.0352)] hover:bg-[#193CB8] text-white px-6 py-4 rounded-xl font-bold transition-all duration-300 group"
-                    >
-                      Enroll Now
-                      <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-                    </Link>
+                  <div className="active:scale-[0.97] transition-transform">
+                    <div className="mt-8 pt-6 border-t border-slate-100">
+                      <Link
+                        href={course.link || "#"}
+                        className="w-full flex justify-center items-center gap-2 bg-[lab(44.0605%_29.0279_-86.0352)] hover:bg-[#193CB8] text-white px-6 py-4 rounded-xl font-bold transition-all duration-300 group"
+                      >
+                        Enroll Now
+                        <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

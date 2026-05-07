@@ -1,30 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Calendar, MapPin, Users, ArrowRight } from "lucide-react";
+import {
+  Calendar,
+  MapPin,
+  Users,
+  ArrowRight,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { easeOut } from "framer-motion";
 import { events } from "@/data/events";
 import { useRef } from "react";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.5, ease: easeOut },
-  },
-};
+import FadeIn from "./FadeIn";
 
 const imagePositionMap: Record<string, string> = {
   top: "50% 0%",
@@ -39,8 +25,8 @@ export default function PastEvents() {
 
   const handleScrollRight = () => {
     if (scrollRef.current) {
-      const scrollAmount = window.innerWidth * 0.75; 
-      
+      const scrollAmount = window.innerWidth * 0.75;
+
       scrollRef.current.scrollBy({
         left: scrollAmount,
         behavior: "smooth",
@@ -54,47 +40,41 @@ export default function PastEvents() {
       className="py-20 px-10 md:py-24 relative overflow-hidden"
     >
       {/* Background */}
-      <div 
-        className="absolute inset-0 opacity-20 mix-blend-soft-light pointer-events-none"  
+      <div
+        className="absolute inset-0 opacity-20 mix-blend-soft-light pointer-events-none"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }} 
+        }}
       />
+
       <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-slate-300 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
-        <div className="mb-10">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Past events
-          </h2>
-        </div>
+        <FadeIn>
+          <div className="mb-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Past events
+            </h2>
+          </div>
+        </FadeIn>
 
         {/* Scroll Container Wrapper */}
         <div className="relative">
-          
           {/* Mobile Overlay Swipe Indicator */}
-          <div 
-            className="absolute -right-5 top-0 bottom-8 w-[50%] bg-gradient-to-l from-slate-50/80 via-slate-50/10 to-transparent z-20 md:hidden flex items-center justify-end pr-2 pointer-events-none"
-          >
-
-            <motion.button
+          <div className="absolute -right-5 top-0 bottom-8 w-[50%] bg-gradient-to-l from-slate-50/80 via-slate-50/10 to-transparent z-20 md:hidden flex items-center justify-end pr-2 pointer-events-none">
+            <button
+              aria-label="scroll right"
               onClick={handleScrollRight}
-              animate={{ x: [0, -8, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-              className="bg-white shadow-md rounded-full p-2 text-primary flex items-center justify-center border border-slate-200 backdrop-blur-sm pointer-events-auto active:scale-95"
+              className="animate-bounce-x bg-white shadow-md rounded-full p-2 text-primary flex items-center justify-center border border-slate-200 backdrop-blur-sm pointer-events-auto active:scale-95 transition-transform"
             >
               <ArrowRight size={20} />
-            </motion.button>
+            </button>
           </div>
 
           {/* Cards */}
-          <motion.div
+          <div
             ref={scrollRef}
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
             className="
               flex gap-4 overflow-x-auto snap-x snap-mandatory pb-8
               md:grid md:grid-cols-2 lg:grid-cols-3
@@ -102,111 +82,117 @@ export default function PastEvents() {
               scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0
             "
           >
-            {[...events].reverse().map((event) => {
+            {[...events].reverse().map((event, idx) => {
               const objectPosition =
                 imagePositionMap[event.imagePosition ?? ""] ??
                 event.imagePosition ??
                 "center";
 
               return (
-                <motion.div
+                <FadeIn
                   key={event.id}
-                  variants={cardVariants}
-                  whileTap={{ scale: 0.97 }}
+                  delay={idx * 0.1}
                   className="
-                    group bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm
-                    min-w-[75vw] md:min-w-0 snap-center flex flex-col
+                    min-w-[75vw] md:min-w-0
+                    snap-center h-full
                   "
                 >
-                  <Link
-                    href={`/events/${event.id}`}
-                    className="flex flex-col h-full"
+                  <div
+                    className="
+                      group bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm
+                      flex flex-col h-full
+                      hover:shadow-md transition-all duration-300
+                      active:scale-[0.98]
+                    "
                   >
-                    {/* Image */}
-                    <div className="relative h-52 md:h-56 w-full">
-                      {event.image && (
-                        <Image
-                          src={event.image}
-                          alt={event.alt}
-                          fill
-                          // priority={event.id === 1}
-                          placeholder="blur"
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          className="object-cover"
-                          style={{ objectPosition }}
-                        />
-                      )}
-
-                      {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
-
-                      {/* Badges */}
-                      <div className="absolute top-3 left-3 right-3 flex justify-between">
-                        {event.date && (
-                          <span className="bg-white/95 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1 ">
-                            <Calendar size={12} className="text-primary" />
-                            {event.date}
-                          </span>
+                    <Link
+                      href={`/events/${event.id}`}
+                      className="flex flex-col h-full"
+                    >
+                      {/* Image */}
+                      <div className="relative h-52 md:h-56 w-full">
+                        {event.image && (
+                          <Image
+                            src={event.image}
+                            alt={event.alt}
+                            fill
+                            placeholder="blur"
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            className="object-cover"
+                            style={{ objectPosition }}
+                          />
                         )}
 
-                        {event.category && (
-                          <span className="bg-primary/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center">
-                            {event.category}
-                          </span>
-                        )}
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent" />
+
+                        {/* Badges */}
+                        <div className="absolute top-3 left-3 right-3 flex justify-between">
+                          {event.date && (
+                            <span className="bg-white/95 text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg flex items-center gap-1">
+                              <Calendar
+                                size={12}
+                                className="text-primary"
+                              />
+                              {event.date}
+                            </span>
+                          )}
+
+                          {event.category && (
+                            <span className="bg-primary/90 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center">
+                              {event.category}
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Content */}
-                    <div className="p-6 flex flex-col grow">
-                      {event.title && (
-                        <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-1">
-                          {event.title}
-                        </h3>
-                      )}
-
-                      {event.description && (
-                        <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2 grow">
-                          {Array.isArray(event.description)
-                            ? event.description[0]
-                            : event.description}
-                        </p>
-                      )}
-
-                      <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
-                        {event.location && (
-                          <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
-                            <MapPin size={14} className="text-primary" />
-                            {event.location}
-                          </div>
+                      {/* Content */}
+                      <div className="p-6 flex flex-col grow">
+                        {event.title && (
+                          <h3 className="text-xl font-bold text-slate-900 mb-3 line-clamp-1">
+                            {event.title}
+                          </h3>
                         )}
 
-                        {event.attendees && (
-                          <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
-                            <Users size={14} className="text-primary" />
-                            {event.attendees}
-                          </div>
+                        {event.description && (
+                          <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2 grow">
+                            {Array.isArray(event.description)
+                              ? event.description[0]
+                              : event.description}
+                          </p>
                         )}
+
+                        <div className="flex items-center justify-between pt-4 border-t border-slate-100 mt-auto">
+                          {event.location && (
+                            <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
+                              <MapPin
+                                size={14}
+                                className="text-primary"
+                              />
+                              {event.location}
+                            </div>
+                          )}
+
+                          {event.attendees && (
+                            <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
+                              <Users
+                                size={14}
+                                className="text-primary"
+                              />
+                              {event.attendees}
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                </motion.div>
+                    </Link>
+                  </div>
+                </FadeIn>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </div>
-
-      {/* Hide Scrollbar */}
-      <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
+     
     </section>
   );
 }

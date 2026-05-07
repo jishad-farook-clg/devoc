@@ -1,12 +1,12 @@
-import jishad from "@/public/gallery/jishad-devoc-founder-speaking-event.jpeg"
-import adil from "@/public/gallery/adil-devoc-cofounder-speaking-event.jpeg"
-import shazia from "@/public/gallery/shazia-devoc-cofounder-speaking-event.jpeg"
-import mou from "@/public/gallery/devoc-farook-college-mou-signing-group-photo.jpeg"
-import logo_launch from "@/public/gallery/devoc-logo-launch-farook-college-stage-group-photo.jpeg"
-import mementos1 from "@/public/gallery/devoc-student-recognition-hackathon-mementos-1.jpeg"
-import mementos2 from "@/public/gallery/devoc-student-recognition-hackathon-mementos-2.jpeg"
-import hackathon1 from "@/public/gallery/devoc-students-hackathon-collaboration-laptops-1.jpeg"
-import hackathon2 from "@/public/gallery/devoc-students-hackathon-collaboration-laptops-2.jpeg"
+import jishad from "@/public/gallery/jishad-devoc-founder-speaking-event.webp"
+import adil from "@/public/gallery/adil-devoc-cofounder-speaking-event.webp"
+import shazia from "@/public/gallery/shazia-devoc-cofounder-speaking-event.webp"
+import mou from "@/public/gallery/devoc-farook-college-mou-signing-group-photo.webp"
+import logo_launch from "@/public/gallery/devoc-logo-launch-farook-college-stage-group-photo.webp"
+import mementos1 from "@/public/gallery/devoc-student-recognition-hackathon-mementos-1.webp"
+import mementos2 from "@/public/gallery/devoc-student-recognition-hackathon-mementos-2.webp"
+import hackathon1 from "@/public/gallery/devoc-students-hackathon-collaboration-laptops-1.webp"
+import hackathon2 from "@/public/gallery/devoc-students-hackathon-collaboration-laptops-2.webp"
 
 export const gallery = [
         {

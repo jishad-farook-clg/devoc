@@ -1,5 +1,5 @@
-import uidai_hackathon from "@/public/events/UIDAI-Data-Hackathon-2026.jpg"
-import from_brain_to_binary from "@/public/events/from_brain_to_binary_poster.jpeg"
+import uidai_hackathon from "@/public/events/UIDAI-Data-Hackathon-2026.webp"
+import from_brain_to_binary from "@/public/events/from_brain_to_binary_poster.webp"
 
 export const events = [
   {
