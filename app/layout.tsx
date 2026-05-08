@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import LoadingProvider from "@/components/LoadingProvider";
 import Clarity from "@/components/Clarity";
+import RecaptchaProvider from "@/components/RecaptchaProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -60,6 +61,7 @@ export default function RootLayout({
           <Clarity/>
           {children}
         </LoadingProvider>
+        <RecaptchaProvider/>
       </body>
     </html>
   );

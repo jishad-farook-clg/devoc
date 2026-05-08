@@ -28,6 +28,12 @@ html{
   --color-accent: var(--accent);
 }
 
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
+
+/* Custom animations */
 @keyframes breathe {
   0% {
     transform: scale(1);

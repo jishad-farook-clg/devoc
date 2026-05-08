@@ -6,6 +6,7 @@ import { ArrowLeft, CheckCircle2, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import { executeRecaptcha } from "@/lib/recaptcha";
 
 export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
@@ -18,11 +19,10 @@ export default function RegisterPage() {
     phone: "",
     college: "",
     department: "",
-    // course: "",
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setForm({
       ...form,
@@ -32,8 +32,18 @@ export default function RegisterPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-
     setLoading(true);
+
+    let token;
+    
+    try {
+      token = await executeRecaptcha("register_form");
+    } catch (error) {
+      console.error("reCAPTCHA script failed to load or execute", error);
+      alert("We couldn't verify you are human. Please disable your adblocker/privacy shields and try again, or email us directly.");
+      setLoading(false);
+      return;
+    }
 
     try {
       const res = await fetch("/api/register", {
@@ -41,14 +51,24 @@ export default function RegisterPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          recaptchaToken: token,
+        }),
       });
 
       if (!res.ok) {
-        throw new Error("Failed");
+        const errorData = await res.json().catch(() => null);
+
+        const message =
+          errorData?.error ||
+          "Something went wrong. Please try again.";
+
+        throw new Error(message);
       }
 
       setStep(2);
+
     } catch {
       alert("Something went wrong. Please try again.");
     } finally {
@@ -145,29 +165,6 @@ export default function RegisterPage() {
                     onChange={handleChange}
                     required
                   />
-
-                  {/* 
-                  <div>
-                    <label className="block text-sm font-medium mb-1">
-                      Interested Course
-                    </label>
-
-                    <select
-                      name="course"
-                      required
-                      value={form.course}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border"
-                    >
-                      <option value="">Select course</option>
-                      <option>Web Designing</option>
-                      <option>Mobile App Development</option>
-                      <option>Backend Development</option>
-                      <option>Django</option>
-                      <option>I didn&apos;t choose yet</option>
-                    </select>
-                  </div> 
-                  */}
 
                   <div className="active:scale-[0.97] transition-transform">
                     <button

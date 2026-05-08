@@ -50,12 +50,12 @@ export default async function EventDetailsPage({
           {/* Breadcrumb */}
           <div className="mb-8">
             <Link
-              href="/"
+              href="/#events"
               className="inline-flex items-center gap-2 text-slate-500 hover:text-primm
                font-semibold transition-colors bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200/60 hover:shadow-sm"
             >
               <ArrowLeft size={16} />
-              Back to Home
+              Back to Events
             </Link>
           </div>
 

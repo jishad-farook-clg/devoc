@@ -1,17 +1,42 @@
 import { google } from "googleapis";
 import { NextResponse } from "next/server";
+import { verifyRecaptcha } from "@/lib/server/verify-recaptcha";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const { name, email, phone, college, department} = body;
+    const { name, email, phone, college, department, recaptchaToken} = body;
 
-    // if (!name || !email || !phone || !department || !course) {
-    if (!name || !email || !phone || !college || !department) {
+    if (!name || !email || !phone || !college || !department || !recaptchaToken) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
+      );
+    }
+
+    const recaptcha = await verifyRecaptcha(recaptchaToken);
+
+    if (!recaptcha.success) {
+      return NextResponse.json(
+        { error: "Invalid reCAPTCHA token" },
+        { status: 403 }
+      );
+    }
+
+    if (recaptcha.action !== "register_form") {
+      return NextResponse.json(
+        { error: "Invalid reCAPTCHA action" },
+        { status: 403 }
+      );
+    }
+
+    const threshold = Number(process.env.RECAPTCHA_MIN_SCORE) || 0.5;
+    if (recaptcha.score < threshold) {
+      console.warn(`reCAPTCHA score too low: ${recaptcha.score}`);
+      return NextResponse.json(
+        { error: "Suspected bot activity" },
+        { status: 403 }
       );
     }
 
@@ -46,7 +71,6 @@ export async function POST(req: Request) {
           phone,
           college,
           department,
-          // course,
           timestamp,
         ]],
       },

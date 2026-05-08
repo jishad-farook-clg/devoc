@@ -113,6 +113,27 @@ export default function Footer() {
                 </div>
 
                 <div className="pt-8 border-t border-slate-800 text-center text-sm text-slate-500">
+                    <p className="mb-4">
+                        This site is protected by reCAPTCHA and the Google{" "}
+                        <a
+                            href="https://policies.google.com/privacy"
+                            className="text-slate-400 hover:text-white transition-colors hover:underline"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Privacy Policy
+                        </a>{" "}
+                        and{" "}
+                        <a
+                            href="https://policies.google.com/terms"
+                            className="text-slate-400 hover:text-white transition-colors hover:underline"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Terms of Service
+                        </a>{" "}
+                        apply.
+                    </p>
                     <p>&copy; {new Date().getFullYear()} DeVoc Academy. All rights reserved.</p>
                 </div>
             </div>

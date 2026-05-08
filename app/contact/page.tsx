@@ -6,6 +6,7 @@ import { CheckCircle2, Loader2, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import { executeRecaptcha } from "@/lib/recaptcha";
 
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
@@ -30,13 +31,27 @@ export default function ContactPage() {
     e.preventDefault();
     setLoading(true);
 
+    let token;
+    
+    try {
+      token = await executeRecaptcha("contact_form");
+    } catch (error) {
+      console.error("reCAPTCHA script failed to load or execute", error);
+      alert("We couldn't verify you are human. Please disable your adblocker/privacy shields and try again, or email us directly.");
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          recaptchaToken: token,
+        }),
       });
 
       if (!res.ok) {
