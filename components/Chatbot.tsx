@@ -266,7 +266,7 @@ export default function Chatbot() {
                             setIsOpen(true)
                         }
                         aria-label="DeVoc Assistant Chatbot"
-                        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 p-3 sm:p-4 bg-primary text-white rounded-full shadow-2xl hover:bg-secondary transition-colors flex items-center justify-center group"
+                        className="fixed bottom-12 right-6 sm:bottom-6 sm:right-6 z-50 p-3 sm:p-4 bg-primary text-white rounded-full shadow-2xl hover:bg-secondary transition-colors flex items-center justify-center group"
                     >
                         <div className="absolute inset-0 rounded-full animate-ping bg-primary opacity-20 group-hover:opacity-40"></div>
 
