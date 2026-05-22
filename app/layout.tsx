@@ -9,6 +9,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("https://devoc.bvocfarookcollege.com"),
 
+  alternates: {
+    canonical: "/",
+  },
+
   title: "DeVoc | Project-Based Software Development & Hybrid Coding Program",
   description:
     "Master real-world coding skills with DeVoc's hybrid learning model. From basic web dev to advanced capstone projects, get mentorship, soft skills, and career prep.",
