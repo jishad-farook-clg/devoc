@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import LoadingProvider from "@/components/LoadingProvider";
 import Clarity from "@/components/Clarity";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -64,6 +65,7 @@ export default function RootLayout({
           <Clarity/>
           {children}
         </LoadingProvider>
+         <GoogleAnalytics gaId="G-FFTF030JGL" />
       </body>
     </html>
   );
