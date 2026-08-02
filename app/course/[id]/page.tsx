@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Clock, BookOpen, ArrowLeft, ArrowRight, MapPin } from "lucide-react";
 import Link from "next/link";
 import { courses } from "@/data/courses";
+import { parseFormatting } from "@/utils/textFormatter";
 
 // 1️⃣ Generate Static Params
 export function generateStaticParams() {
@@ -78,10 +79,10 @@ export default async function CourseDetailsPage({
                 {Array.isArray(course.description)
                   ? course.description.map((p: string, i: number) => (
                       <p key={i} className="mb-4">
-                        {p}
+                        {parseFormatting(p)}
                       </p>
                     ))
-                  : <p>{course.description}</p>}
+                  : <p>{parseFormatting(course.description)}</p>}
               </div>
             </div>
 

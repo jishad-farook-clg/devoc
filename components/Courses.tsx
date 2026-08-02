@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import FadeIn from "./FadeIn";
 import { courses } from "@/data/courses";
+import { parseFormatting } from "@/utils/textFormatter";
 
 export default function Courses() {
   const router = useRouter();
@@ -81,7 +82,7 @@ export default function Courses() {
                     {/* Description */}
                     {course.description && (
                       <p className="text-slate-500 text-sm leading-relaxed mb-8 line-clamp-3 grow">
-                        {course.description[0]}
+                        {parseFormatting(course.description[0])}
                       </p>
                     )}
 
