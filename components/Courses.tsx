@@ -127,8 +127,7 @@ export default function Courses() {
                     {/* CTA */}
                     <div className="mt-auto">
                       <Link
-                        href={course.link}
-                        target="_blank"
+                        href={`/course/${course.id}`}
                         onClick={(e) => e.stopPropagation()}
                         className="w-full inline-flex justify-center items-center gap-2 bg-primary hover:bg-secondary text-white px-5 py-3.5 rounded-xl text-sm font-semibold transition-all duration-300"
                       >
